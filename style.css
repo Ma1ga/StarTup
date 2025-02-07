@@ -1,0 +1,222 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.hero {
+    background: url('img/startup-hero-bg.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding-bottom: 100px;
+}
+.navbar a {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.navbar a:hover {
+    transform: scale(1.5);
+    filter: brightness(1.2);
+}
+.navbar-brand,
+.navbar-nav li a {
+    font-size: 24px;
+    line-height: 36px;
+    color: #ffffff !important;
+    font-weight: 700;
+    font-family: "Montserrat";
+}
+.navbar {
+    margin-bottom: 100px;
+}
+.nav-item a:hover {
+    transform: rotate(5deg);
+}
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-size: 48px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 700;
+    font-family: "Montserrat";
+    text-align: center;
+}
+
+.hero-content {
+    padding: 60px;
+}
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Montserrat";
+    text-align: center;
+}
+
+.get-started {
+    padding: 15px 30px;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Montserrat";
+    text-align: center;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    text-decoration: none;
+    border-radius: 2px;
+    background-color:transparent;
+    border: 2px solid #ffffff;
+}
+.get-started:hover {
+    border: 2px solid #777;
+    transform: scaleX(1.2);
+}
+
+.services {
+    background: #f8f9fa;
+    padding: 50px 0;
+}
+.services h2 {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Montserrat";
+    text-align: center;
+}
+.services .container p {
+    font-size: 16px;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+    text-align: center;
+}
+.services .container h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Montserrat";
+    text-align: center;
+}
+.service-item {
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+}
+.service-item img {
+    margin: 10px
+}
+.about-us .container h2 {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Montserrat";
+    text-align: center;
+}
+.about-us .container p {
+    font-size: 16px;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+    text-align: center;
+}
+.about-us .container figcaption {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #555555;
+    font-family: "Myriad Pro";
+}
+.about-workMan img {
+    padding-bottom: 10px;
+}
+.about-workMan figure {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.about-workMan figure:hover {
+    filter: drop-shadow(0 0 46px rgba(204, 204, 223, .71));
+    background-color: #fff;
+    transition: 0.3s;
+    transform: scale(1.1);
+    transform: rotate(1deg);
+    border-radius: 10px;
+}
+.work-list {
+    gap: 15px;
+    
+}
+.work-list li {
+    list-style: none;
+}
+.work-list li a {   
+    font-size: 16px;
+    line-height: 24px;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+    text-align: center;
+    text-decoration: none;
+}
+.last-works h2 {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Montserrat";
+    text-align: center;
+}
+.main-paralax {
+    background: url(img/Paralax.png) no-repeat;
+    background-size: cover;
+    padding-bottom: 50px;
+
+}
+.project-work {
+    padding: 100px;
+    
+}
+.project-work h2 {
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+    text-align: center;
+    margin-bottom: 30px;
+}
+.project-work a {
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 400;
+    text-decoration: none;
+    font-family: "Roboto Slab";
+    text-align: center;
+    padding: 18px 28px;
+    border-radius: 2px;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+
+}
+
+@media screen and (min-width: 320px) {
+    .hero-content h1 {
+        font-size: 35px;
+    }
+    .last-works img {
+        width: 90%;
+    }
+    .project-work {
+        padding: 65px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .hero-content h1 {
+        font-size: 48px;
+    }
+    .project-work {
+        padding: 100px;
+    }
+}

@@ -149,6 +149,9 @@ body {
     gap: 15px;
     
 }
+.w-80 {
+    width: 80%;
+}
 .work-list li {
     list-style: none;
 }
@@ -194,13 +197,150 @@ body {
     text-decoration: none;
     font-family: "Roboto Slab";
     text-align: center;
-    padding: 18px 28px;
+    padding: 13px 28px;
     border-radius: 2px;
     background-color: transparent;
     border: 2px solid #ffffff;
 
 }
-
+.one-block-blog {
+    justify-content: center;
+}
+.recent-blog-h2 {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Montserrat";
+    text-align: center;
+}
+.recent-blog-p {
+    font-size: 16px;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+    text-align: center;
+}
+.recent-blog-post-h2 {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #c0301c;
+    font-weight: 400;
+    font-family: "Montserrat";
+    text-align: center;
+}
+.recent-blog-post-p {
+    font-size: 13px;
+    color: #777777;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+}
+.recent-blog-post-text {
+    font-size: 14px;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+}
+.recent-blog-post-a {
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #c0301c;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: "Roboto Slab";
+}
+.slider-footer {
+    background-color: #f8f8f8;
+}
+.slider-footer-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.clients-logo {
+    padding-bottom: 50px;
+}
+.slider-footer-p {
+    font-size: 18px;
+    color: #555555;
+    font-weight: 400;
+    width: 50%;
+    font-family: "Roboto Slab";
+    text-align: center;
+}
+.send-message-div {
+    display: flex;
+    flex-direction: row;
+    gap: 38px;
+}
+.input-email-div {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #555555;
+    font-family: "Myriad Pro";
+    border: 1px solid #555555;
+    width: 100%;
+    padding: 10px 17px;
+}
+.input-email-div:focus {
+    outline: none;
+    border: 1px solid #c0301c;
+}
+.message-button {
+    font-size: 12px;
+    letter-spacing: 1px;
+    background-color: #ffffff;
+    text-transform: uppercase;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+    border: 1px solid #555555;
+    padding: 10px 25px;
+}
+.text-message {
+    font-size: 12px;
+    color: #c0301c;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+}
+.contact-info-p {
+    font-size: 12px;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+}
+.contact-info-hp {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Montserrat";
+}
+.touch {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Montserrat";
+    text-align: center;
+}
+.footer {
+    background-color: #c0301c;
+}
+.footer hr {
+    padding-bottom: 33px;
+    width: 5% !important;
+    color: #fff;
+    border-top: 2px solid #fff;
+}
+.footer-p {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+}
 @media screen and (min-width: 320px) {
     .hero-content h1 {
         font-size: 35px;

@@ -14,6 +14,7 @@ document.querySelectorAll(".three-click").forEach(image => {
 });// тройной кликер ))))
 
 
+
 // document.addEventListener("mousemove", (event) =>{
 //     console.log(event)
     

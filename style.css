@@ -1,14 +1,17 @@
+html {
+    scroll-behavior: smooth;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-.hero {
-    background: url('img/startup-hero-bg.jpg') no-repeat center center/cover;
+.hero {  
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/startup-hero-bg.jpg) no-repeat center center/cover;
     color: white;
     text-align: center;
-    padding-bottom: 100px;
+    padding-bottom: 200px;
 }
 .navbar a {
     transition: transform 0.3s ease, filter 0.3s ease;
@@ -22,8 +25,11 @@ body {
     font-size: 24px;
     line-height: 36px;
     color: #ffffff !important;
-    font-weight: 700;
+    font-weight: 400;
     font-family: "Montserrat";
+}
+.navbar-brand {
+    font-weight: 700 !important;
 }
 .navbar {
     margin-bottom: 100px;
@@ -74,9 +80,87 @@ body {
     border: 2px solid #777;
     transform: scaleX(1.2);
 }
+img-work:hover {
+    filter: brightness(#c0301c);
+
+}
+.table-recent-blog {
+    width: 33% !important;
+}
+.work-item {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.work-item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.5); 
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.img-work {
+    display: block;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.parent {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.parent-p-gen {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Montserrat";
+    text-align: center;
+}
+.parent-p-text {
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+    text-align: center;
+}
+.parent-a {
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    color: #c0301c;
+    font-weight: 400;
+    font-family: "Roboto Slab";
+    text-align: center;
+    text-decoration: none;
+    background-color: #ffffff;
+}
+.work-item:hover::after {
+    opacity: 1;
+}
+
+.work-item:hover .parent {
+    z-index: 2;
+    opacity: 1;
+}
+
+.work-item:hover .img-work {
+    transform: scale(1.0);
+}
 
 .services {
-    background: #f8f9fa;
     padding: 50px 0;
 }
 .services h2 {
@@ -110,6 +194,9 @@ body {
 .service-item img {
     margin: 10px
 }
+.about-us {
+    background-color: #f8f8f8;
+}
 .about-us .container h2 {
     font-size: 20px;
     text-transform: uppercase;
@@ -131,6 +218,7 @@ body {
     color: #555555;
     font-family: "Myriad Pro";
 }
+
 .about-workMan img {
     padding-bottom: 10px;
 }
@@ -148,6 +236,19 @@ body {
 .work-list {
     gap: 15px;
     
+}
+.work-list a {
+    font-weight: 400;
+    text-decoration: none;
+    color: black;
+    padding: 5px 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+.work-list a.active {
+    font-weight: 400;
+    color: red;
+    font-weight: bold;
 }
 .w-80 {
     width: 80%;
@@ -172,6 +273,11 @@ body {
     font-family: "Montserrat";
     text-align: center;
 }
+.latest-hr {
+    width: 5%;
+    text-align: center;
+    border: 1px solid #555555;
+}
 .main-paralax {
     background: url(img/Paralax.png) no-repeat;
     background-size: cover;
@@ -191,6 +297,7 @@ body {
     margin-bottom: 30px;
 }
 .project-work a {
+    display: inline-grid;
     text-transform: uppercase;
     color: #ffffff;
     font-weight: 400;
@@ -201,7 +308,12 @@ body {
     border-radius: 2px;
     background-color: transparent;
     border: 2px solid #ffffff;
+    transition: transform 0.3s ease, filter 0.3s ease;
 
+}
+.button-hover:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 .one-block-blog {
     justify-content: center;
@@ -358,5 +470,18 @@ body {
     }
     .project-work {
         padding: 100px;
+    }
+    .table-recent-blog {
+        width: 35% !important;
+    }
+}
+@media screen and (min-width: 768px) {
+    .table-recent-blog {
+        width: 44% !important;
+    }
+}
+@media screen and (min-width: 1440px) {
+    .table-recent-blog {
+        width: 33% !important;
     }
 }

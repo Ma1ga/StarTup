@@ -53,13 +53,26 @@ document.getElementById("callForm").addEventListener("submit", function(event) {
     event.preventDefault(); 
     let nameValue = document.getElementById("name-popup").value;
     const phoneNumber = document.getElementById("tel").value;
+    
+    if (!validate(phoneNumber)) {
+        console.log("Невалидный номер");
+        return;
+    }
+
     console.log("Значение инпута:", nameValue, phoneNumber);
+    
     if (homeArrow) {
         homeArrow.innerHTML = `WELCOME TO ${nameValue}`;
     } else {
         console.error("Элемент #homeArrow не найден!");
     }
 });
+
+function validate(phoneNumber) {
+    const numberValid = /^\+38(\(0\d{2}\)|0\d{2})\d{2,3}-?\d{2}-?\d{2,3}$/;
+    return numberValid.test(phoneNumber);
+}
+
 
 document.querySelectorAll(".three-click").forEach(image => {
     image.addEventListener("click", function(event) {
@@ -73,6 +86,13 @@ document.querySelectorAll(".three-click").forEach(image => {
         }
     });
 });// тройной кликер ))))
+function openPopup(id) {
+    document.getElementById(id).style.display = "flex";
+}
+
+function closePopup(id) {
+    document.getElementById(id).style.display = "none";
+}
 
 
 function showPopup() {
@@ -100,15 +120,7 @@ function showPopup() {
     }
   })
 
-function validate() {
-    const numberValid = /^\+38(\(0\d{2}\)|0\d{2})\d{2,3}-?\d{2}-?\d{2,3}$/;
-    const phoneNumber = document.getElementById("tel").value;
-    if (numberValid.test(phoneNumber)) {
-        return "Валидный номер"; 
-    } else {
-        return "Невалидный номер"; 
-    }
-}
+
 
 
 orderCallButton.addEventListener("click", showPopup) 

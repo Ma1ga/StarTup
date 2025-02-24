@@ -231,7 +231,7 @@
                                 <p class="recent-blog-post-text small">
                                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua...
                                 </p>
-                                <a href="#" class="recent-blog-post-a fw-bold">Read more</a>
+                                <a href="javascript:void(0);" class="recent-blog-post-a fw-bold" onclick="openPopup('readMorePopup')">Read more</a>
                             </div>
                         </div>
             
@@ -251,11 +251,22 @@
                                 <p class="recent-blog-post-text small">
                                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua...
                                 </p>
-                                <a href="#" class="recent-blog-post-a fw-bold">Read more</a>
+                                <a href="javascript:void(0);" class="recent-blog-post-a fw-bold" onclick="openPopup('readMorePopup')">Read more</a>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+
+                <div class="call-popup" id="readMorePopup">
+                    <div class="call-popup-content">
+                        <span class="close-popup" onclick="closePopup('readMorePopup')">close</span>
+                        <h2>Детальніше</h2>
+                        <p>Тут можна додати розширену інформацію про блог або інші деталі.</p>
+                        <button onclick="closePopup('readMorePopup')">Закрити</button>
+                    </div>
+                </div>
+                
             </div>
             <div class="slider-footer py-4">
                 <div class="slider-footer-div project-work text-center px-3">

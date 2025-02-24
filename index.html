@@ -36,8 +36,33 @@
             <div class="hero-content text-center">
                 <h1 id="home-arrow">WELCOME TO STARTUP</h1>
                 <p>Your Favourite Creative Agency Template</p>
-                <a href="#" class="get-started">GET STARTED</a>
+                <a href="javascript:void(0);" class="header-a-tel get-started" id="order-call">GET STARTED</a>
             </div>
+            <div class="call-popup" id="popup">
+                <div class="call-popup-content">
+                    <span class="close-popup" onclick="closePopup()">close</span>
+                    <h2>Попередній дзвінок</h2>
+                    <input type="checkbox" placeholder="captcha" id="captcha-active">
+                    <div class="captcha" style="display: none;" >
+                        <p>Перетягніть коло в область щоб підтвердити</p>
+                        <div class="drop-zone" id="dropZone"></div>
+                        <div class="circle" id="circle"></div>
+                    </div>
+            
+                    <form id="callForm">
+                        <label>
+                            <span>Ім'я:</span>
+                            <input type="text" placeholder="Ваше ім'я" id="name-popup">
+                        </label>
+                        <label>
+                            <span>Телефон:</span>
+                            <input type="tel" placeholder="Ваш номер телефону" id="tel">
+                        </label>
+                        <button type="submit" id="submitBtn" disabled>Замовити дзвінок</button>
+                    </form>
+                </div>
+            </div>
+            
         </header>
         <div class="wrapper">
             <section class="services text-center py-5">

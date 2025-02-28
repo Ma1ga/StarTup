@@ -40,8 +40,8 @@
             </div>
             <div class="call-popup" id="popup">
                 <div class="call-popup-content">
-                    <span class="close-popup" onclick="closePopup()">close</span>
-                    <h2>Попередній дзвінок</h2>
+                    <span class="close-popup" onclick="closePopup('popup')">close</span>
+                    <h2>Регістрація Клієнта</h2>
                     <input type="checkbox" placeholder="captcha" id="captcha-active">
                     <div class="captcha" style="display: none;" >
                         <p>Перетягніть коло в область щоб підтвердити</p>
@@ -145,58 +145,73 @@
                     <h2 class="mb-4" id="work-arrow">LATEST WORKS</h2>
                     <hr class="latest-hr mx-auto">
                     <ul class="work-list d-flex justify-content-center flex-column flex-sm-row">
-                        <li><a href="" class="active">All</a></li>
-                        <li><a href="#">Branding</a></li>
-                        <li><a href="#">Design</a></li>
-                        <li><a href="#">Development</a></li>
-                        <li><a href="#">Strategy</a></li>
+                        <li><a href="" class="active" id="all">All</a></li>
+                        <li><a href="#" id="branding">Branding</a></li>
+                        <li><a href="#" id="design">Design</a></li>
+                        <li><a href="#" id="development">Development</a></li>
+                        <li><a href="#" id="strategy">Strategy</a></li>
                     </ul>
                     <div class="row g-3 mt-4">
                         <div class="col-md-4 col-sm-6">
-                            <figure class="work-item">
-                                <img src="img/bird.png" class="img-work" alt="Work 1"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="#" class="parent-a">View</a></div>
+                            <figure class="work-item" data-category="branding design">
+                                <img src="img/bird.png" class="img-work" alt="Work 1"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
                         <div class="col-md-4 col-sm-6">
-                            <figure class="work-item">
-                                <img src="img/bird.png" class="img-work" alt="Work 2"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="#" class="parent-a">View</a></div>
+                            <figure class="work-item" data-category="strategy design">
+                                <img src="img/bird.png" class="img-work" alt="Work 2"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
                         <div class="col-md-4 col-sm-6">
-                            <figure class="work-item">
-                                <img src="img/bird.png" class="img-work" alt="Work 3"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="#" class="parent-a">View</a></div>
+                            <figure class="work-item" data-category="strategy design">
+                                <img src="img/bird.png" class="img-work" alt="Work 3"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
                         <div class="col-md-4 col-sm-6">
-                            <figure class="work-item">
-                                <img src="img/bird.png" class="img-work" alt="Work 4"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="#" class="parent-a">View</a></div>
+                            <figure class="work-item" data-category="branding">
+                                <img src="img/bird.png" class="img-work" alt="Work 4"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
                         <div class="col-md-4 col-sm-6">
-                            <figure class="work-item">
-                                <img src="img/bird.png" class="img-work" alt="Work 5"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="#" class="parent-a">View</a></div>
+                            <figure class="work-item" data-category="strategy ">
+                                <img src="img/bird.png" class="img-work" alt="Work 5"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-4 col-sm-6"data-category="development">
                             <figure class="work-item">
-                                <img src="img/bird.png" class="img-work" alt="Work 6"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="#" class="parent-a">View</a></div>
+                                <img src="img/bird.png" class="img-work" alt="Work 6"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-4 col-sm-6" data-category="branding">
                             <figure class="work-item">
-                                <img src="img/bird.png" class="img-work" alt="Work 7"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="#" class="parent-a">View</a></div>
+                                <img src="img/bird.png" class="img-work" alt="Work 7"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-4 col-sm-6" data-category="branding">
                             <figure class="work-item">
-                                <img src="img/bird.png" class="img-work" alt="Work 8"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="#" class="parent-a">View</a></div>
+                                <img src="img/bird.png" class="img-work" alt="Work 8"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-4 col-sm-6" data-category="development">
                             <figure class="work-item">
-                                <img src="img/bird.png" class="img-work" alt="Work 9"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="#" class="parent-a">View</a></div>
+                                <img src="img/bird.png" class="img-work" alt="Work 9"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
+                    </div>
+                </div>
+                <div class="call-popup" id="hair-dresser">
+                    <div class="call-popup-content">
+                        <span class="close-popup" onclick="closePopup('hair-dresser')">close</span>
+                        <h2>Hair Dresser</h2>
+                        <div>
+                            <img src="https://icieducation.co.uk/blog/wp-content/uploads/2021/07/guide-to-becoming-a-hairdresser.jpg" alt="">
+                            <p>Cutting, coloring, styling - the hairdresser works wonders on your hair. He not only selects the perfect style, but also makes each client more confident. ✨
+    
+                                A good hairdresser always knows trends, uses high-quality materials and takes into account the characteristics of hair. <br> Trust a professional - and your image will sparkle with new colors! 🎨✂️<br>
+                                
+                                #Hairdresser #Style #Beauty #NewLook</p>
+                        </div>
+                        <button onclick="closePopup('hair-dresser')">Закрити</button>
                     </div>
                 </div>
             </section>

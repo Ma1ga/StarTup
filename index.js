@@ -120,6 +120,35 @@ function showPopup() {
     }
   })
 
+  document.addEventListener("DOMContentLoaded", function () {
+    const filters = document.querySelectorAll(".work-list a");
+    const items = document.querySelectorAll(".work-item");
+    
+    filters.forEach(filter => {
+        filter.addEventListener("click", function (event) {
+            event.preventDefault();
+            const category = this.id;
+            
+            filters.forEach(f => f.classList.remove("active"));
+            this.classList.add("active");
+            
+            items.forEach(item => {
+                if (category === "all" || item.dataset.category.includes(category)) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+            
+            localStorage.setItem("selectedCategory", category);
+        });
+    });
+
+    const savedCategory = localStorage.getItem("selectedCategory");
+    if (savedCategory) {
+        document.getElementById(savedCategory)?.click();
+    }
+});
 
 
 

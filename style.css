@@ -15,24 +15,10 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh; 
     justify-content: center;
     align-items: center;
     text-align: center;
     padding-bottom: 200px;
-}
-.hero::before {
-    content: "";
-    background-image: url("img/startup-hero-bg.jpg");
-    background-size: cover;
-    background-position: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    transform: translateZ(0);
 }
 .navbar a {
     transition: transform 0.3s ease, filter 0.3s ease;
@@ -101,76 +87,87 @@ body {
     border: 2px solid #777;
     transform: scaleX(1.2);
 }
+/* Общие стили для всплывающего окна */
 .call-popup {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 320px;
+    max-width: 90%;
     z-index: 1000;
     display: none;
 }
 
 .call-popup-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
     text-align: center;
 }
 
 .close-popup {
     position: absolute;
     top: 10px;
-    right: 10px;
-    font-size: 20px;
+    right: 15px;
+    font-size: 16px;
     cursor: pointer;
+    color: #333;
 }
 
 .call-popup h2 {
-    color: #555555;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333;
 }
 
-.call-popup form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.call-popup label {
-    color: #555555;
-    display: flex;
-    flex-direction: column;
+/* Стили для формы */
+.call-popup form label {
+    display: block;
     text-align: left;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #555;
+}
+
+.call-popup form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     font-size: 14px;
 }
 
-.call-popup input {
-    
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.call-popup form input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 .call-popup button {
-    padding: 10px;
-    background-color: #4caf50;
-    color: #fff;
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    font-size: 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
 }
 
-.call-popup button:hover {
-    background-color: #45a049;
+.call-popup button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
 }
+
+.call-popup button:hover:not(:disabled) {
+    background: #0056b3;
+}
+
 .captcha {
     text-align: center;
     margin-bottom: 15px;
@@ -303,6 +300,7 @@ img-work:hover {
 }
 
 .services {
+    background-color: var(--bs-body-bg);
     padding: 50px 0;
 }
 .services h2 {
@@ -376,6 +374,7 @@ img-work:hover {
     border-radius: 10px;
 }
 .work-list {
+    padding: 0;
     gap: 15px;
     
 }
@@ -427,7 +426,6 @@ img-work:hover {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 75vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -623,10 +621,19 @@ img-work:hover {
         font-size: 35px;
     }
     .last-works img {
-        width: 90%;
+        width: 100%;
     }
     .project-work {
         padding: 65px;
+    }
+    .parent {
+        left: 50%;
+    }
+    .work-item::after {
+        width: 100%;
+    }
+    .send-message-div {
+        flex-direction: column;
     }
 }
 @media screen and (min-width: 768px) {
@@ -635,6 +642,18 @@ img-work:hover {
     }
     .project-work {
         padding: 100px;
+    }
+    .last-works img {
+        width: 90%;
+    }
+    .parent {
+        left: 45%;
+    }
+    .work-item::after {
+        width: 90%;
+    }
+    .send-message-div {
+        flex-direction: row;
     }
     .table-recent-blog {
         width: 35% !important;

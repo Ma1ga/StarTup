@@ -526,6 +526,7 @@ img-work:hover {
     font-family: "Roboto Slab";
 }
 .slider-footer {
+    position: relative;
     background-color: #f8f8f8;
 }
 .slider-footer-div {
@@ -591,6 +592,53 @@ img-work:hover {
     color: #555555;
     font-weight: 400;
     font-family: "Montserrat";
+}
+.popups {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+.slider-footer-p {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+.hidden {
+    opacity: 0;
+}
+.dots {
+    margin-top: 10px;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dot.active {
+    background-color: #555;
+}
+
+
+.popup-content {
+    text-align: center;
+}
+
+.popup button {
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
 }
 .touch {
     font-size: 20px;

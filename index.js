@@ -11,6 +11,42 @@ let submitBtn = document.getElementById("submitBtn");
 let popupName = document.getElementById("name-popup");
 let callForm = document.getElementById("callForm");
 let homeArrow = document.getElementById("home-arrow");
+let index = 0;
+const quoteText = document.getElementById("quote-text");
+const quoteAuthor = document.getElementById("quote-author");
+const dots = document.querySelectorAll(".dot");
+let interval;
+
+const quotes = [
+    { text: "Having placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.", author: "John Doe, Google Inc." },
+    { text: "Another great quote about teamwork and success.", author: "Jane Smith, Facebook" },
+    { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs, Apple" }
+];
+
+
+function setQuote(i) {
+    index = i;
+    quoteText.textContent = quotes[i].text;
+    quoteAuthor.textContent = quotes[i].author;
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[i].classList.add("active");
+}
+
+function nextQuote() {
+    index = (index + 1) % quotes.length;
+    setQuote(index);
+}
+
+function startSlider() {
+    interval = setInterval(nextQuote, 3000);
+}
+
+document.querySelector(".slider-footer").addEventListener("mouseenter", () => clearInterval(interval));
+document.querySelector(".slider-footer").addEventListener("mouseleave", startSlider);
+
+startSlider();
+
+
 document.getElementById("circle").onmousedown = function (e) {
     activeCircle = e.target;
     offsetX = e.clientX - activeCircle.offsetLeft;
@@ -25,6 +61,7 @@ function onMouseMove(e) {
         activeCircle.style.top = `${e.clientY - offsetY}px`;
     }
 }
+
 
 function onMouseUp() {
     if (activeCircle) {

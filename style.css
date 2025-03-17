@@ -18,8 +18,9 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-bottom: 200px;
+    padding-bottom: 140px;
 }
+
 .navbar a {
     transition: transform 0.3s ease, filter 0.3s ease;
 }
@@ -29,8 +30,7 @@ body {
 }
 .navbar-brand,
 .navbar-nav li a {
-    font-size: 24px;
-    line-height: 36px;
+    font-size: 14px;
     color: #ffffff !important;
     font-weight: 400;
     font-family: "Montserrat";
@@ -39,7 +39,7 @@ body {
     font-weight: 700 !important;
 }
 .navbar {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 .nav-item a:hover {
     transform: rotate(5deg);
@@ -60,7 +60,7 @@ body {
 }
 .hero-content p {
     font-size: 1.2rem;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     font-size: 18px;
     text-transform: uppercase;
     color: #ffffff;
@@ -298,7 +298,11 @@ img-work:hover {
 .work-item:hover .img-work {
     transform: scale(1.0);
 }
-
+.services-hr {
+    width: 5%;
+    background-color: #555555;
+    border: 1px solid;
+}
 .services {
     background-color: var(--bs-body-bg);
     padding: 50px 0;
@@ -349,6 +353,7 @@ img-work:hover {
     font-size: 16px;
     color: #555555;
     font-weight: 400;
+    margin-bottom: 40px;
     font-family: "Roboto Slab";
     text-align: center;
 }
@@ -358,7 +363,9 @@ img-work:hover {
     color: #555555;
     font-family: "Myriad Pro";
 }
-
+.about-hr {
+    margin-bottom: 55px;
+}
 .about-workMan img {
     padding-bottom: 10px;
 }

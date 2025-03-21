@@ -18,11 +18,25 @@ const dots = document.querySelectorAll(".dot");
 let interval;
 
 const quotes = [
-    { text: "Having placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.", author: "John Doe, Google Inc." },
+    { text: "Having placeat facere possimus, omnis voluptas assumenda est, omnis dolor.", author: "John Doe, Google Inc." },
     { text: "Another great quote about teamwork and success.", author: "Jane Smith, Facebook" },
     { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs, Apple" }
 ];
 
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('carousel');
+    const items = Array.from(carousel.getElementsByClassName('col-md-3'));
+
+    document.getElementById('next').addEventListener('click', function() {
+        const firstItem = items.shift(); 
+        items.push(firstItem); 
+        updateCarousel();
+    });
+    function updateCarousel() {
+        carousel.innerHTML = '';
+        items.forEach(item => carousel.appendChild(item));
+    }
+});
 
 function setQuote(i) {
     index = i;
@@ -40,6 +54,14 @@ function nextQuote() {
 function startSlider() {
     interval = setInterval(nextQuote, 3000);
 }
+
+window.addEventListener('scroll', function () {
+    let parallax = document.querySelector('.main-paralax');
+    let scrollPosition = window.scrollY;
+    
+    parallax.style.backgroundPositionY = -(scrollPosition * 0.1) + 'px';
+});
+
 
 document.querySelector(".slider-footer").addEventListener("mouseenter", () => clearInterval(interval));
 document.querySelector(".slider-footer").addEventListener("mouseleave", startSlider);

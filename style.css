@@ -42,6 +42,15 @@ body {
 .navbar-brand {
     font-weight: 700 !important;
 }
+.animation {
+    transition: all 1s cubic-bezier(.07,.14,.7,.96);
+}
+.slide-left {
+    transform: translateX(-100px) scale(0.5);
+}
+.slide-right {
+    transform: translateX(100px) scale(0.5);
+}
 
 .navbar {
     margin-bottom: 50px;
@@ -701,8 +710,17 @@ img-work:hover {
     font-weight: 400;
     font-family: "Roboto Slab";
 }
-
+.adress-div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.adress-div img {
+    width: 5%;
+    height: 5%;
+}
 .contact-info-hp {
+    margin: 0;
     font-size: 14px;
     text-transform: uppercase;
     color: #555555;

@@ -22,21 +22,41 @@ const quotes = [
     { text: "Another great quote about teamwork and success.", author: "Jane Smith, Facebook" },
     { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs, Apple" }
 ];
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const carousel = document.getElementById('carousel');
-    const items = Array.from(carousel.getElementsByClassName('col-md-3'));
+    const items = Array.from(carousel.children);
+    let visibleCount = getVisibleCount();
 
-    document.getElementById('next').addEventListener('click', function() {
-        const firstItem = items.shift(); 
-        items.push(firstItem); 
+    document.getElementById('next').addEventListener('click', function () {
+        const firstItem = items.shift(); // Убираем первый элемент
+        items.push(firstItem); // Добавляем его в конец
         updateCarousel();
     });
+
+    document.getElementById('prev').addEventListener('click', function () {
+        const lastItem = items.pop(); // Убираем последний элемент
+        items.unshift(lastItem); // Добавляем его в начало
+        updateCarousel();
+    });
+
     function updateCarousel() {
-        carousel.innerHTML = '';
-        items.forEach(item => carousel.appendChild(item));
+        carousel.innerHTML = ''; // Очищаем карусель
+        items.forEach(item => carousel.appendChild(item)); // Перерисовываем элементы
     }
+
+    function getVisibleCount() {
+        if (window.innerWidth <= 576) return 1;
+        if (window.innerWidth <= 768) return 2;
+        if (window.innerWidth <= 992) return 3;
+        return 4;
+    }
+
+    window.addEventListener('resize', function () {
+        visibleCount = getVisibleCount();
+        updateCarousel();
+    });
 });
+
 
 function setQuote(i) {
     index = i;

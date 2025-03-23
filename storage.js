@@ -3,6 +3,44 @@ const form = document.getElementById('contactForm');
 const popup = document.getElementById('confirmationPopup')
 const confirmButton = document.getElementById('confirmButton');
 const rejectButton = document.getElementById('rejectButton')
+document.addEventListener("DOMContentLoaded", function () {
+    const categoryLinks = document.querySelectorAll(".work-list a");
+    const workItems = document.querySelectorAll(".work-item");
+
+    function filterWorks(category) {
+        workItems.forEach(item => {
+            const itemCategoryAttr = item.getAttribute("data-category") || ""; 
+            const itemCategories = itemCategoryAttr.trim() ? itemCategoryAttr.split(" ") : [];
+
+            if (category === "all" || itemCategories.includes(category)) {
+                item.closest(".col-md-4").style.display = "block";
+            } else {
+                item.closest(".col-md-4").style.display = "none";
+            }
+        });
+    }
+
+    function updateActiveClass(activeCategory) {
+        categoryLinks.forEach(link => {
+            link.classList.toggle("active", link.id === activeCategory);
+        });
+    }
+
+    const savedCategory = localStorage.getItem("selectedCategory") || "all";
+    updateActiveClass(savedCategory);
+    filterWorks(savedCategory);
+
+    categoryLinks.forEach(link => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+            const selectedCategory = this.id;
+
+            localStorage.setItem("selectedCategory", selectedCategory);
+            updateActiveClass(selectedCategory);
+            filterWorks(selectedCategory);
+        });
+    });
+});
 
 function showPopup() {
     document.getElementById('popupName').textContent = document.getElementById('name').value;

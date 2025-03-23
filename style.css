@@ -267,7 +267,14 @@ img-work:hover {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }
-
+.email-img {
+    width: 4% !important;
+    height: 4% !important;
+}
+.hotline-img {
+    width: 4% !important;
+    height: 4% !important;
+}
 .img-work {
     display: block;
     width: 100%;
@@ -875,12 +882,35 @@ img-work:hover {
     }
 }
 
-.about-workMan {
-    display: flex;
+#carousel-container {
+    position: relative;
+    overflow: hidden;
     width: 100%;
 }
 
-.col-md-3 {
-    flex: 0 0 25%;
-    transition: opacity 0.5s ease;
+#carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+#carousel .col-md-3 {
+    flex: 0 0 25%; /* По умолчанию 4 элемента */
+}
+
+@media (max-width: 992px) {
+    #carousel .col-md-3 {
+        flex: 0 0 33.33%; /* На планшете 3 элемента */
+    }
+}
+
+@media (max-width: 768px) {
+    #carousel .col-md-3 {
+        flex: 0 0 50%; /* На мобильных 2 элемента */
+    }
+}
+
+@media (max-width: 576px) {
+    #carousel .col-md-3 {
+        flex: 0 0 100%; /* На узких экранах 1 элемент */
+    }
 }

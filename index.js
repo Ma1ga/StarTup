@@ -28,20 +28,20 @@ document.addEventListener('DOMContentLoaded', function () {
     let visibleCount = getVisibleCount();
 
     document.getElementById('next').addEventListener('click', function () {
-        const firstItem = items.shift(); // Убираем первый элемент
-        items.push(firstItem); // Добавляем его в конец
+        const firstItem = items.shift();
+        items.push(firstItem);
         updateCarousel();
     });
 
     document.getElementById('prev').addEventListener('click', function () {
-        const lastItem = items.pop(); // Убираем последний элемент
-        items.unshift(lastItem); // Добавляем его в начало
+        const lastItem = items.pop();
+        items.unshift(lastItem);
         updateCarousel();
     });
 
     function updateCarousel() {
-        carousel.innerHTML = ''; // Очищаем карусель
-        items.forEach(item => carousel.appendChild(item)); // Перерисовываем элементы
+        carousel.innerHTML = '';
+        items.forEach(item => carousel.appendChild(item));
     }
 
     function getVisibleCount() {

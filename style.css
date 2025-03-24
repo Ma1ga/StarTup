@@ -899,13 +899,13 @@ img-work:hover {
 
 @media (max-width: 992px) {
     #carousel .col-md-3 {
-        flex: 0 0 33.33%; /* На планшете 3 элемента */
+        flex: 0 0 33.33%; 
     }
 }
 
 @media (max-width: 768px) {
     #carousel .col-md-3 {
-        flex: 0 0 50%; /* На мобильных 2 элемента */
+        flex: 0 0 50%; 
     }
 }
 

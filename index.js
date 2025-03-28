@@ -4,6 +4,11 @@ const callPopup = document.querySelector(".call-popup");
 const closePopupButton = document.querySelector(".close-popup");
 const captchaActive = document.getElementById("captcha-active");
 const captcha = document.querySelector(".captcha");
+const popupDresser = document.getElementById("hair-dresser");
+const readMorePopup = document.getElementById("readMorePopup");
+const readMoreButton = document.getElementById("readMoreA");
+const confirmDataPopup = document.getElementById("confirmationPopup");
+const confirmDataPopupButton = document.getElementById("confirm-buttom");
 let activeCircle = null;
 let offsetX, offsetY;
 let dropZone = document.getElementById("dropZone");
@@ -12,7 +17,7 @@ let popupName = document.getElementById("name-popup");
 let callForm = document.getElementById("callForm");
 let homeArrow = document.getElementById("home-arrow");
 let index = 0;
-let viewButton = document.querySelectorAll(".parent-a")
+let viewButton = document.getElementById("viewButton");
 let blackBackground = document.querySelector(".black-fonts")
 
 const quotes = [
@@ -337,13 +342,52 @@ function showPopup() {
 //         hidePopup()
 //     }
 //   })
+
 window.addEventListener("click", (event) => {  
-      
-    if (isPopup && !callPopup.contains(event.target) && !orderCallButton.contains(event.target)) {
-        hidePopup();
-        isPopup = 0;
-        console.log("Попап закрито при кліку поза ним");
-    }
+    setTimeout(() => {
+        if (isPopup && !callPopup.contains(event.target) && orderCallButton.contains(event.target)) {
+            closePopup('hair-dresser');
+            isPopup = false;
+            console.log("Попап закрыт при клике вне его");
+        }
+    }); 
+});
+window.addEventListener("click", (event) => {  
+    setTimeout(() => {
+        if (isPopup && !popupDresser.contains(event.target) && viewButton.contains(event.target)) {
+            closePopup('hair-dresser');
+            isPopup = false;
+            console.log("Попап закрыт при клике вне его");
+        }
+    }); 
+});
+
+window.addEventListener("click", (event) => {  
+    setTimeout(() => {
+        if (isPopup && !readMorePopup.contains(event.target) && readMoreButton.contains(event.target)) {
+            
+            isPopup = false;
+            console.log("Попап закрыт при клике вне его qwje");
+        }
+    }, ); 
+});
+window.addEventListener("click", (event) => {  
+    setTimeout(() => {
+        if (isPopup && !confirmDataPopup.contains(event.target) && confirmDataPopupButton.contains(event.target)) {
+            
+            isPopup = false;
+            console.log("Попап закрыт при клике вне его qwje");
+        }
+    }, ); 
+});
+blackBackground.addEventListener("click", () => {
+    closePopup('hair-dresser');
+    closePopup('readMorePopup');
+    
+    closePopup('popup');
+    closePopup('confirmationPopup');
+    isPopup = false;
+    console.log("Попап закрыт по затемнению");
 });
 
 
@@ -362,7 +406,7 @@ document.querySelectorAll(".three-click").forEach(image => {
 function openPopup(id) {
     document.getElementById(id).style.display = "flex";
     isPopup = true
-    blackBackground.style.display = "block"
+    blackBackground.style.display = "block";
 }
 
 // function closePopup(popupId) {
@@ -409,6 +453,9 @@ function openPopup(id) {
 
 
 orderCallButton.addEventListener("click", showPopup) 
+viewButton.addEventListener("click", showPopup);
+confirmDataPopupButton.addEventListener("click", showPopup);
+readMoreButton.addEventListener("click", showPopup);
 captchaActive.addEventListener("click", showCaptcha)
 
 // document.addEventListener("mousemove", (event) =>{

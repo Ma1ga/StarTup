@@ -19,8 +19,48 @@ document.addEventListener("DOMContentLoaded", function () {
     checkVisibility(); 
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
 
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+});
 
+document.addEventListener("DOMContentLoaded", function () {
+    const mainParalax = document.querySelector(".main-paralax");
+    const animations = document.querySelectorAll(".animation");
+
+    function handleScroll() {
+        let scrollY = window.scrollY;
+        let offset = mainParalax.offsetTop;
+        let height = mainParalax.offsetHeight;
+
+        if (scrollY + window.innerHeight > offset) {
+            let moveY = (scrollY - offset) * 0.001; 
+            mainParalax.style.backgroundPositionY = `calc(50% + ${moveY}px)`;
+        }
+
+        animations.forEach((el) => {
+            let rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.90) {
+                el.classList.add("show");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+});
 
 document.addEventListener("DOMContentLoaded", function () {
     const navbarToggler = document.querySelector(".navbar-toggler");

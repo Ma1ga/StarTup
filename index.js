@@ -12,32 +12,116 @@ let popupName = document.getElementById("name-popup");
 let callForm = document.getElementById("callForm");
 let homeArrow = document.getElementById("home-arrow");
 let index = 0;
-const quoteText = document.getElementById("quote-text");
-const quoteAuthor = document.getElementById("quote-author");
-const dots = document.querySelectorAll(".dot");
+const quotes = [
+    {
+        text: "Having placeat facere possimus, omnis voluptas assumenda est, omnis dolor.",
+        author: "John Doe, Google Inc.",
+        image: "img/Citat1.png"
+    },
+    {
+        text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",
+        author: "Jane Smith, Microsoft",
+        image: "img/Citat2.png"
+    },
+    {
+        text: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.",
+        author: "Elon Musk, Tesla",
+        image: "img/Citat3.png"
+    }
+];
+
 let interval;
 
-const quotes = [
-    { text: "Having placeat facere possimus, omnis voluptas assumenda est, omnis dolor.", author: "John Doe, Google Inc." },
-    { text: "Another great quote about teamwork and success.", author: "Jane Smith, Facebook" },
-    { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs, Apple" }
-];
+const quoteText = document.getElementById("quote-text");
+const quoteAuthor = document.getElementById("quote-author");
+const quoteImage = document.querySelector(".clients-logo"); 
+const dots = document.querySelectorAll(".dot");
+
+function setQuote(i) {
+    index = i;
+    quoteText.textContent = quotes[i].text;
+    quoteAuthor.textContent = quotes[i].author;
+    quoteImage.src = quotes[i].image; 
+
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[i].classList.add("active");
+}
+
+function nextQuote() {
+    index = (index + 1) % quotes.length;
+    setQuote(index);
+}
+
+function startSlider() {
+    interval = setInterval(nextQuote, 3000);
+}
+
+document.querySelector(".slider-footer").addEventListener("mouseenter", () => clearInterval(interval));
+document.querySelector(".slider-footer").addEventListener("mouseleave", startSlider);
+
+startSlider();
+
+document.addEventListener('DOMContentLoaded', function () {
+    const popups = document.querySelectorAll('.popup');
+
+    window.openPopup = function (id) {
+        document.getElementById(id).style.display = 'block';
+    };
+
+    document.addEventListener('click', function (event) {
+        popups.forEach(popup => {
+            const isInsidePopup = popup.contains(event.target); 
+            const isPopupTrigger = event.target.closest('.parent-a'); 
+
+            if (!isInsidePopup && !isPopupTrigger) {
+                popup.style.display = 'none';
+            }
+        });
+    });
+
+    document.querySelectorAll('.popup-close').forEach(closeBtn => {
+        closeBtn.addEventListener('click', function () {
+            this.closest('.popup').style.display = 'none';
+        });
+    });
+});
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const carousel = document.getElementById('carousel');
     const items = Array.from(carousel.children);
     let visibleCount = getVisibleCount();
+    let isAnimating = false; // Флаг для предотвращения спама кликов
 
     document.getElementById('next').addEventListener('click', function () {
+        if (isAnimating) return;
+        isAnimating = true;
+
         const firstItem = items.shift();
         items.push(firstItem);
-        updateCarousel();
+        animateCarousel(-1);
     });
 
     document.getElementById('prev').addEventListener('click', function () {
+        if (isAnimating) return;
+        isAnimating = true;
+
         const lastItem = items.pop();
         items.unshift(lastItem);
-        updateCarousel();
+        animateCarousel(1);
     });
+
+    function animateCarousel(direction) {
+        carousel.style.transition = "transform 0.5s ease-in-out";
+        carousel.style.transform = `translateX(${direction * -100 / visibleCount}%)`;
+
+        setTimeout(() => {
+            carousel.style.transition = "none";
+            carousel.style.transform = "translateX(0)";
+            updateCarousel();
+            isAnimating = false;
+        }, 500);
+    }
 
     function updateCarousel() {
         carousel.innerHTML = '';
@@ -58,22 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function setQuote(i) {
-    index = i;
-    quoteText.textContent = quotes[i].text;
-    quoteAuthor.textContent = quotes[i].author;
-    dots.forEach(dot => dot.classList.remove("active"));
-    dots[i].classList.add("active");
-}
 
-function nextQuote() {
-    index = (index + 1) % quotes.length;
-    setQuote(index);
-}
-
-function startSlider() {
-    interval = setInterval(nextQuote, 3000);
-}
 
 window.addEventListener('scroll', function () {
     let parallax = document.querySelector('.main-paralax');
@@ -81,14 +150,6 @@ window.addEventListener('scroll', function () {
     
     parallax.style.backgroundPositionY = -(scrollPosition * 0.1) + 'px';
 });
-
-
-document.querySelector(".slider-footer").addEventListener("mouseenter", () => clearInterval(interval));
-document.querySelector(".slider-footer").addEventListener("mouseleave", startSlider);
-
-startSlider();
-
-
 document.getElementById("circle").onmousedown = function (e) {
     activeCircle = e.target;
     offsetX = e.clientX - activeCircle.offsetLeft;
@@ -132,18 +193,22 @@ document.getElementById("callForm").addEventListener("submit", function(event) {
     event.preventDefault(); 
     let nameValue = document.getElementById("name-popup").value;
     const phoneNumber = document.getElementById("tel").value;
-    
+
     if (!validate(phoneNumber)) {
         console.log("Невалидный номер");
         return;
     }
 
-    console.log("Значение инпута:", nameValue, phoneNumber);
-    
+    localStorage.setItem("userName", nameValue);
+    localStorage.setItem("userPhone", phoneNumber);
+
+    console.log("Данные сохранены:", nameValue, phoneNumber);
+
+    const homeArrow = document.getElementById("home-arrow");
     if (homeArrow) {
         homeArrow.innerHTML = `WELCOME TO ${nameValue}`;
     } else {
-        console.error("Элемент #homeArrow не найден!");
+        console.error("Элемент #home-arrow не найден!");
     }
 });
 
@@ -151,6 +216,21 @@ function validate(phoneNumber) {
     const numberValid = /^\+38(\(0\d{2}\)|0\d{2})\d{2,3}-?\d{2}-?\d{2,3}$/;
     return numberValid.test(phoneNumber);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    let savedName = localStorage.getItem("userName");
+    let savedPhone = localStorage.getItem("userPhone");
+
+    if (savedName) {
+        document.getElementById("name-popup").value = savedName;
+        document.getElementById("home-arrow").innerHTML = `WELCOME TO ${savedName}`;
+    }
+
+    if (savedPhone) {
+        document.getElementById("tel").value = savedPhone;
+    }
+});
+
 
 
 document.querySelectorAll(".three-click").forEach(image => {

@@ -42,7 +42,8 @@
                 <div class="call-popup-content">
                     <span class="close-popup" onclick="closePopup('popup')">close</span>
                     <h2>Регістрація Клієнта</h2>
-                    <input type="checkbox" placeholder="captcha" id="captcha-active">
+                    <input type="checkbox" placeholder="captcha" id="captcha-active"> 
+                    <span class="captcha-span">captcha</span>
                     <div class="captcha" style="display: none;" >
                         <p>Перетягніть коло в область щоб підтвердити</p>
                         <div class="drop-zone" id="dropZone"></div>
@@ -113,37 +114,39 @@
                             <p>Fusce efficitur, justo at luctus fermentum, nisi purus facilisis libero, at cursus nisl erat at mi. Phasellus tristique tortor id dolor cursus, nec venenatis magna gravida.</p>
                         </div>
                     </div>
-                    <div class="about-workMan row mt-4 overflow-hidden" id="carousel-container">
-                        <div class="d-flex" id="carousel">
-                            <div class="col-md-3">
-                                <figure>
-                                    <img src="img/Layer 12.png" class="img-work" alt="Team Member 1">
-                                    <figcaption>Md. Khalil Uddin <br>Head of Ideas</figcaption>
-                                </figure>
+                    <div class="carousel-container">
+                        <button id="prev" class="carousel-btn left-btn">&lt;</button>
+                        <div class="about-workMan row mt-4 overflow-hidden" id="carousel-container">
+                            <div class="d-flex" id="carousel">
+                                <div class="col-md-3">
+                                    <figure>
+                                        <img src="img/Layer 12.png" class="img-work" alt="Team Member 1">
+                                        <figcaption>Md. Khalil Uddin <br>Head of Ideas</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-md-3">
+                                    <figure>
+                                        <img src="img/Layer 13.png" class="img-work" alt="Team Member 2">
+                                        <figcaption>Rubel Mah <br>Lead WordPress Developer</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-md-3">
+                                    <figure>
+                                        <img src="img/Layer 15.png" class="img-work" alt="Team Member 3">
+                                        <figcaption>Shamim Mia <br>St. Web Developer</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-md-3">
+                                    <figure>
+                                        <img src="img/Layer 16.png" class="img-work" alt="Team Member 4">
+                                        <figcaption>John Doe <br>Front-end Developer</figcaption>
+                                    </figure>
+                                </div>
                             </div>
-                            <div class="col-md-3">
-                                <figure>
-                                    <img src="img/Layer 13.png" class="img-work" alt="Team Member 2">
-                                    <figcaption>Rubel Mah <br>Lead WordPress Developer</figcaption>
-                                </figure>
-                            </div>
-                            <div class="col-md-3">
-                                <figure>
-                                    <img src="img/Layer 15.png" class="img-work" alt="Team Member 3">
-                                    <figcaption>Shamim Mia <br>St. Web Developer</figcaption>
-                                </figure>
-                            </div>
-                            <div class="col-md-3">
-                                <figure>
-                                    <img src="img/Layer 16.png" class="img-work" alt="Team Member 4">
-                                    <figcaption>John Doe <br>Front-end Developer</figcaption>
-                                </figure>
-                            </div>
-                            
                         </div>
+                        <button id="next" class="carousel-btn right-btn">&gt;</button>
                     </div>
-                    <button id="prev">Previous</button>
-                    <button id="next">Next</button>
+                    
                     
                 </div>
             </section>
@@ -169,37 +172,37 @@
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <figure class="work-item" data-category="strategy design">
-                                <img src="img/bird.png" class="img-work" alt="Work 2"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
+                                <img src="img/one_photo.png" class="img-work" alt="Work 2"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <figure class="work-item" data-category="strategy design">
-                                <img src="img/bird.png" class="img-work" alt="Work 3"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
+                                <img src="img/three_photo.png" class="img-work" alt="Work 3"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <figure class="work-item" data-category="branding">
-                                <img src="img/bird.png" class="img-work" alt="Work 4"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
+                                <img src="img/two_photo.png" class="img-work" alt="Work 4"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <figure class="work-item" data-category="strategy ">
-                                <img src="img/bird.png" class="img-work" alt="Work 5"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
+                                <img src="img/fourth_photo.png" class="img-work" alt="Work 5"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
                         <div class="col-md-4 col-sm-6"data-category="development">
                             <figure class="work-item">
-                                <img src="img/bird.png" class="img-work" alt="Work 6"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
+                                <img src="img/five_photo.png" class="img-work" alt="Work 6"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
                         <div class="col-md-4 col-sm-6" data-category="branding">
                             <figure class="work-item">
-                                <img src="img/bird.png" class="img-work" alt="Work 7"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
+                                <img src="img/six_photo.png" class="img-work" alt="Work 7"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
                         <div class="col-md-4 col-sm-6" data-category="branding">
                             <figure class="work-item">
-                                <img src="img/bird.png" class="img-work" alt="Work 8"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
+                                <img src="img/seven_photo.png" class="img-work" alt="Work 8"><div class="parent"> <p class="parent-p-gen">Hair Dresser</p> <p class="parent-p-text">Branding</p> <a href="javascript:void(0);" class="parent-a" onclick="openPopup('hair-dresser')">View</a></div>
                             </figure>
                         </div>
                         <div class="col-md-4 col-sm-6" data-category="development">
@@ -209,7 +212,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="call-popup" id="hair-dresser">
+                <div class="call-popup" id="hair-dresser ">
                     <div class="call-popup-content">
                         <span class="close-popup" onclick="closePopup('hair-dresser')">close</span>
                         <h2>Hair Dresser</h2>
@@ -250,9 +253,12 @@
                                         <p class="mb-0 fw-bold">18</p>
                                         <small>OCT</small>
                                     </div>
-                                    <h2 class="recent-blog-post-h2  mb-0">Startup ideas needs to be funded</h2>
+                                    <div>
+
+                                        <h2 class="recent-blog-post-h2  mb-0">Startup ideas needs to be funded</h2>
+                                        <p class="recent-blog-post-p text-muted mt-2">By Khalil Uddin in Development</p>
+                                    </div>
                                 </div>
-                                <p class="recent-blog-post-p text-muted mt-2">By Khalil Uddin in Development</p>
                                 <p class="recent-blog-post-text small">
                                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua...
                                 </p>
@@ -262,7 +268,7 @@
             
                         <div class="row align-items-start g-4 mt-4 animation slide-right">
                             <div class="table-recent-blog">
-                                <img src="img/recent-blog.png" alt="" class="" style="max-width: 300px;">
+                                <img src="img/Rectangle 12.png" alt="" class="" style="max-width: 300px;">
                             </div>
                             <div class="col-md-6 d-flex flex-column">
                                 <div class="d-flex align-items-center">
@@ -270,9 +276,12 @@
                                         <p class="mb-0 fw-bold">18</p>
                                         <small>OCT</small>
                                     </div>
-                                    <h2 class="recent-blog-post-h2 mb-0">User interface designing elements</h2>
+                                    <div>
+
+                                        <h2 class="recent-blog-post-h2 mb-0">User interface designing elements</h2>
+                                        <p class="recent-blog-post-p text-muted mt-2">By Khalil Uddin in Development</p>
+                                    </div>
                                 </div>
-                                <p class="recent-blog-post-p text-muted mt-2">By Khalil Uddin in Development</p>
                                 <p class="recent-blog-post-text small">
                                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua...
                                 </p>
@@ -287,7 +296,7 @@
                     <div class="call-popup-content">
                         <span class="close-popup" onclick="closePopup('readMorePopup')">close</span>
                         <h2>Детальніше</h2>
-                        <p>Тут можна додати розширену інформацію про блог або інші деталі.</p>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua...Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto ducimus quis est accusamus delectus enim fugiat velit pariatur dolorum, veniam provident distinctio expedita omnis aut corrupti sequi vel, tempora cupiditate!</p>
                         <button onclick="closePopup('readMorePopup')">Закрити</button>
                     </div>
                 </div>
@@ -295,7 +304,7 @@
             </div>
             <div class="slider-footer py-4">
                 <div class="slider-footer-div project-work text-center px-3">
-                    <img class="clients-logo mb-3 d-none d-lg-block" src="img/clients-logo.png" alt="">
+                    <img class="clients-logo mb-3  d-lg-block" src="img/Citat1.png" alt="">
                     <p id="quote-text" class="slider-footer-p">
                         Having placeat facere possimus, omnis voluptas assumenda est, omnis dolor.
                     </p>
@@ -314,7 +323,7 @@
         <div class="col-lg-8 text-center">
             <h2 class="touch" id="contact-arrow">GET IN TOUCH</h2>
             <hr class="mx-auto" style="width: 50px; border-top: 2px solid black;">
-            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="touch-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </div>
 

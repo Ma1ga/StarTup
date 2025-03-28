@@ -4,6 +4,18 @@ const popup = document.getElementById('confirmationPopup')
 const confirmButton = document.getElementById('confirmButton');
 const rejectButton = document.getElementById('rejectButton')
 document.addEventListener("DOMContentLoaded", function () {
+    window.addEventListener("scroll", function () {
+        let scrollPos = window.scrollY;
+        document.querySelector(".hero").style.setProperty("--parallax-offset", `${scrollPos * 0.3}px`);
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    window.addEventListener("scroll", function () {
+        let scrollPos = window.scrollY;
+        document.querySelector(".main-paralax").style.setProperty("--parallax-offset", `${scrollPos * 0.3}px`);
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
     const categoryLinks = document.querySelectorAll(".work-list a");
     const workItems = document.querySelectorAll(".work-item");
 

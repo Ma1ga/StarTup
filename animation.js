@@ -18,3 +18,21 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", checkVisibility); // Запускаем при скролле
     checkVisibility(); // Проверяем сразу, если блок уже виден
 });
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const navbarToggler = document.querySelector(".navbar-toggler");
+    const navbarCollapse = document.querySelector(".navbar-collapse");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+        link.addEventListener("click", function () {
+            if (window.innerWidth <= 992) { // Закрывать только на мобильных экранах
+                navbarToggler.classList.add("collapsed"); // Визуально свернуть кнопку
+                navbarCollapse.classList.remove("show"); // Закрыть меню
+            }
+        });
+    });
+});

@@ -29,6 +29,7 @@
                             <li class="nav-item"><a class="nav-link" href="#work-arrow">Work</a></li>
                             <li class="nav-item"><a class="nav-link" href="#blog-arrow">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="#contact-arrow">Contact</a></li>
+                            <button id="logout-btn" class="logout" style="display: none;">Выйти</button>
                         </ul>
                     </div>
                 </div>
@@ -36,8 +37,10 @@
             <div class="hero-content text-center">
                 <h1 id="home-arrow" class="animation slide-left">WELCOME TO STARTUP</h1>
                 <p class="animation slide-right">Your Favourite Creative Agency Template</p>
-                <a href="javascript:void(0);" class="header-a-tel get-started" id="order-call">GET STARTED</a>
+                
             </div>
+            <a href="javascript:void(0);" class="header-a-tel get-started" id="order-call">GET STARTED</a>
+            
             <div class="call-popup" id="popup">
                 <div class="call-popup-content">
                     <span class="close-popup" onclick="closePopup('popup')">close</span>
@@ -48,8 +51,8 @@
                         <p>Перетягніть коло в область щоб підтвердити</p>
                         <div class="drop-zone" id="dropZone"></div>
                         <div class="circle" id="circle"></div>
+                        
                     </div>
-            
                     <form id="callForm">
                         <label>
                             <span>Ім'я:</span>
@@ -121,25 +124,49 @@
                                 <div class="col-md-3">
                                     <figure>
                                         <img src="img/Layer 12.png" class="img-work" alt="Team Member 1">
-                                        <figcaption>Md. Khalil Uddin <br>Head of Ideas</figcaption>
+                                        <figcaption>Md. Khalil Uddin <br><p class="carousel-p">Head of Ideas</p></figcaption>
+                                        <div class="social-icons">
+                                            <a href="#"><img src="img/Facebook.png" alt=""></a>
+                                            <a href="#"><img src="img/Twitter.png" alt=""></a>
+                                            <a href="#"><img src="img/Google.png" alt=""></a>
+                                            <a href="#"><img src="img/fa-linkedin.png" alt=""></a>
+                                        </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-3">
                                     <figure>
                                         <img src="img/Layer 13.png" class="img-work" alt="Team Member 2">
-                                        <figcaption>Rubel Mah <br>Lead WordPress Developer</figcaption>
+                                        <figcaption>Rubel Mah <br><p class="carousel-p">Lead WordPress Developer</p></figcaption>
+                                        <div class="social-icons">
+                                            <a href="#"><img src="img/Facebook.png" alt=""></a>
+                                            <a href="#"><img src="img/Twitter.png" alt=""></a>
+                                            <a href="#"><img src="img/Google.png" alt=""></a>
+                                            <a href="#"><img src="img/fa-linkedin.png" alt=""></a>
+                                        </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-3">
                                     <figure>
                                         <img src="img/Layer 15.png" class="img-work" alt="Team Member 3">
-                                        <figcaption>Shamim Mia <br>St. Web Developer</figcaption>
+                                        <figcaption>Shamim Mia <br><p class="carousel-p">St. Web Developer</p></figcaption>
+                                        <div class="social-icons">
+                                            <a href="#"><img src="img/Facebook.png" alt=""></a>
+                                            <a href="#"><img src="img/Twitter.png" alt=""></a>
+                                            <a href="#"><img src="img/Google.png" alt=""></a>
+                                            <a href="#"><img src="img/fa-linkedin.png" alt=""></a>
+                                        </div>
                                     </figure>
                                 </div>
                                 <div class="col-md-3">
                                     <figure>
                                         <img src="img/Layer 16.png" class="img-work" alt="Team Member 4">
                                         <figcaption>John Doe <br>Front-end Developer</figcaption>
+                                        <div class="social-icons social-icons-end">
+                                            <a href="#"><img src="img/Facebook.png" alt=""></a>
+                                            <a href="#"><img src="img/Twitter.png" alt=""></a>
+                                            <a href="#"><img src="img/Google.png" alt=""></a>
+                                            <a href="#"><img src="img/fa-linkedin.png" alt=""></a>
+                                        </div>
                                     </figure>
                                 </div>
                             </div>
@@ -212,17 +239,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="call-popup" id="hair-dresser ">
+                <div class="call-popup" id="hair-dresser">
                     <div class="call-popup-content">
                         <span class="close-popup" onclick="closePopup('hair-dresser')">close</span>
                         <h2>Hair Dresser</h2>
                         <div>
                             <img src="https://icieducation.co.uk/blog/wp-content/uploads/2021/07/guide-to-becoming-a-hairdresser.jpg" alt="">
-                            <p>Cutting, coloring, styling - the hairdresser works wonders on your hair. He not only selects the perfect style, but also makes each client more confident. ✨
-    
-                                A good hairdresser always knows trends, uses high-quality materials and takes into account the characteristics of hair. <br> Trust a professional - and your image will sparkle with new colors! 🎨✂️<br>
-                                
-                                #Hairdresser #Style #Beauty #NewLook</p>
+                            <p>Cutting, coloring, styling - the hairdresser works wonders on your hair. He not only selects the perfect style, but also makes each client more confident. ✨ <a href="#" class="hairdresser-a">#Hairdresser #Style #Beauty #NewLook</a></p>
                         </div>
                         <button onclick="closePopup('hair-dresser')">Закрити</button>
                     </div>
@@ -243,15 +266,15 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <!-- Первый пост -->
-                        <div class="row align-items-start g-4 animation slide-left">
+                        <div class="row align-items-start g-4 animation slide-left row-recent-blog">
                             <div class="table-recent-blog">
                                 <img src="img/recent-blog.png" alt="" class="" style="max-width: 300px;">
                             </div>
                             <div class="col-md-6 d-flex flex-column">
                                 <div class="d-flex align-items-center">
-                                    <div class="bg-light text-dark text-center px-3 py-2 me-3 oct">
-                                        <p class="mb-0 fw-bold">18</p>
-                                        <small>OCT</small>
+                                    <div class="bg-light text-dark text-center px-3 py-2 me-3 oct father-oct">
+                                        <p class="mb-0 fw-bold oct-18">18</p>
+                                        <small class="oct-18-small">OCT</small>
                                     </div>
                                     <div>
 
@@ -265,20 +288,20 @@
                                 <a href="javascript:void(0);" class="recent-blog-post-a fw-bold" onclick="openPopup('readMorePopup')">Read more</a>
                             </div>
                         </div>
-            
-                        <div class="row align-items-start g-4 mt-4 animation slide-right">
+                            <hr class="recent-blog-hr">
+                        <div class="row align-items-start g-4  animation slide-right">
                             <div class="table-recent-blog">
                                 <img src="img/Rectangle 12.png" alt="" class="" style="max-width: 300px;">
                             </div>
                             <div class="col-md-6 d-flex flex-column">
                                 <div class="d-flex align-items-center">
-                                    <div class="bg-light text-dark text-center px-3 py-2 me-3 oct">
-                                        <p class="mb-0 fw-bold">18</p>
-                                        <small>OCT</small>
+                                    <div class="bg-light text-dark text-center px-3 py-2 me-3 oct father-oct">
+                                        <p class="mb-0 fw-bold oct-18">18</p>
+                                        <small class="oct-18-small">OCT</small>
                                     </div>
                                     <div>
 
-                                        <h2 class="recent-blog-post-h2 mb-0">User interface designing elements</h2>
+                                        <h2 class="recent-blog-post-h2 recent-blog-h3 mb-0">User interface designing elements</h2>
                                         <p class="recent-blog-post-p text-muted mt-2">By Khalil Uddin in Development</p>
                                     </div>
                                 </div>
@@ -296,7 +319,8 @@
                     <div class="call-popup-content">
                         <span class="close-popup" onclick="closePopup('readMorePopup')">close</span>
                         <h2>Детальніше</h2>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua...Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto ducimus quis est accusamus delectus enim fugiat velit pariatur dolorum, veniam provident distinctio expedita omnis aut corrupti sequi vel, tempora cupiditate!</p>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua...
+                            <h2>More-Info</h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto ducimus quis est accusamus delectus enim fugiat velit pariatur dolorum, veniam provident distinctio expedita omnis aut corrupti sequi vel, tempora cupiditate!</p>
                         <button onclick="closePopup('readMorePopup')">Закрити</button>
                     </div>
                 </div>
@@ -426,6 +450,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="index.js"></script>
     <script src="animation.js"></script>
+    <script src="touchpad.js"></script>
     <script src="storage.js"></script>
 </body>
 </html>

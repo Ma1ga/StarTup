@@ -12,6 +12,8 @@ let popupName = document.getElementById("name-popup");
 let callForm = document.getElementById("callForm");
 let homeArrow = document.getElementById("home-arrow");
 let index = 0;
+
+
 const quotes = [
     {
         text: "Having placeat facere possimus, omnis voluptas assumenda est, omnis dolor.",
@@ -61,30 +63,6 @@ document.querySelector(".slider-footer").addEventListener("mouseleave", startSli
 
 startSlider();
 
-document.addEventListener('DOMContentLoaded', function () {
-    const popups = document.querySelectorAll('.popup');
-
-    window.openPopup = function (id) {
-        document.getElementById(id).style.display = 'block';
-    };
-
-    document.addEventListener('click', function (event) {
-        popups.forEach(popup => {
-            const isInsidePopup = popup.contains(event.target); 
-            const isPopupTrigger = event.target.closest('.parent-a'); 
-
-            if (!isInsidePopup && !isPopupTrigger) {
-                popup.style.display = 'none';
-            }
-        });
-    });
-
-    document.querySelectorAll('.popup-close').forEach(closeBtn => {
-        closeBtn.addEventListener('click', function () {
-            this.closest('.popup').style.display = 'none';
-        });
-    });
-});
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -142,14 +120,71 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
-window.addEventListener('scroll', function () {
-    let parallax = document.querySelector('.main-paralax');
-    let scrollPosition = window.scrollY;
-    
-    parallax.style.backgroundPositionY = -(scrollPosition * 0.1) + 'px';
+// Обработчики мыши
+circle.addEventListener("mousedown", function (event) {
+    event.preventDefault();
+    startDrag(event);
 });
+document.addEventListener("mousemove", function (event) {
+    moveCircle(event);
+});
+document.addEventListener("mouseup", function () {
+    endDrag();
+});
+
+// Обработчики тачскрина
+circle.addEventListener("touchstart", function (event) {
+    event.preventDefault();
+    startDrag(event.touches[0]);
+});
+document.addEventListener("touchmove", function (event) {
+    moveCircle(event.touches[0]);
+});
+document.addEventListener("touchend", function () {
+    endDrag();
+});
+
+// Начало перетаскивания
+function startDrag(event) {
+    activeCircle = circle;
+    offsetX = event.clientX - circle.getBoundingClientRect().left;
+    offsetY = event.clientY - circle.getBoundingClientRect().top;
+}
+
+// Перемещение круга
+function moveCircle(event) {
+    if (!activeCircle) return;
+
+    let x = event.clientX - offsetX;
+    let y = event.clientY - offsetY;
+
+    activeCircle.style.position = "absolute";
+    activeCircle.style.left = `${x}px`;
+    activeCircle.style.top = `${y}px`;
+}
+
+// Окончание перетаскивания
+function endDrag() {
+    if (!activeCircle) return;
+
+    let circleRect = activeCircle.getBoundingClientRect();
+    let dropRect = dropZone.getBoundingClientRect();
+
+    if (
+        circleRect.left >= dropRect.left &&
+        circleRect.top >= dropRect.top &&
+        circleRect.right <= dropRect.right &&
+        circleRect.bottom <= dropRect.bottom
+    ) {
+        activeCircle.style.left = `${dropZone.offsetLeft + 25}px`;
+        activeCircle.style.top = `${dropZone.offsetTop + 25}px`;
+        submitBtn.removeAttribute("disabled");
+    }
+
+    activeCircle = null;
+}
+
+
 document.getElementById("circle").onmousedown = function (e) {
     activeCircle = e.target;
     offsetX = e.clientX - activeCircle.offsetLeft;
@@ -190,7 +225,7 @@ function onMouseUp() {
     }
 }
 document.getElementById("callForm").addEventListener("submit", function(event) {
-    event.preventDefault(); 
+    event.preventDefault();
     let nameValue = document.getElementById("name-popup").value;
     const phoneNumber = document.getElementById("tel").value;
 
@@ -199,17 +234,25 @@ document.getElementById("callForm").addEventListener("submit", function(event) {
         return;
     }
 
+    // Сохраняем данные в localStorage
     localStorage.setItem("userName", nameValue);
     localStorage.setItem("userPhone", phoneNumber);
+    localStorage.setItem("isRegistered", "true"); // Флаг регистрации
 
     console.log("Данные сохранены:", nameValue, phoneNumber);
 
+    // Скрываем кнопку и закрываем попап
+    document.getElementById("order-call").style.display = "none";
+    closePopup("popup");
+
+    // Обновляем приветствие
     const homeArrow = document.getElementById("home-arrow");
     if (homeArrow) {
         homeArrow.innerHTML = `WELCOME TO ${nameValue}`;
-    } else {
-        console.error("Элемент #home-arrow не найден!");
     }
+
+    // Показываем кнопку выхода
+    document.getElementById("logout-btn").style.display = "block";
 });
 
 function validate(phoneNumber) {
@@ -220,6 +263,12 @@ function validate(phoneNumber) {
 document.addEventListener("DOMContentLoaded", function () {
     let savedName = localStorage.getItem("userName");
     let savedPhone = localStorage.getItem("userPhone");
+    let isRegistered = localStorage.getItem("isRegistered");
+
+    if (isRegistered === "true") {
+        document.getElementById("order-call").style.display = "none";
+        document.getElementById("logout-btn").style.display = "block"; // Показываем кнопку выхода
+    }
 
     if (savedName) {
         document.getElementById("name-popup").value = savedName;
@@ -230,6 +279,25 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("tel").value = savedPhone;
     }
 });
+
+function closePopup(popupId) {
+    const popup = document.getElementById(popupId);
+    if (popup) {
+        popup.style.display = "none";
+    }
+}
+
+document.getElementById("logout-btn").addEventListener("click", function () {
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userPhone");
+    localStorage.removeItem("isRegistered");
+
+    document.getElementById("order-call").style.display = "inline-block";
+    document.getElementById("logout-btn").style.display = "none";
+
+    document.getElementById("home-arrow").innerHTML = "WELCOME TO STARTUP";
+});
+
 
 
 
@@ -249,8 +317,13 @@ function openPopup(id) {
     document.getElementById(id).style.display = "flex";
 }
 
-function closePopup(id) {
-    document.getElementById(id).style.display = "none";
+function closePopup(popupId) {
+    const popup = document.getElementById(popupId);
+    if (popup) {
+        popup.style.display = "none";
+    } else {
+        console.error("Попап с ID " + popupId + " не найден!");
+    }
 }
 
 

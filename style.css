@@ -92,10 +92,32 @@ body {
 .hero-content {
     padding: 60px;
 }
+.logout {
+    display: none;
+    padding: 5px 20px;
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+#logout-btn:hover {
+    background-color: #cc0000;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
 
+#logout-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+}
 .hero-content p {
     font-size: 1.2rem;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-size: 18px;
     text-transform: uppercase;
     color: #ffffff;
@@ -123,7 +145,16 @@ body {
     border: 2px solid #777;
     transform: scaleX(1.2);
 }
-
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
 /* Общие стили для всплывающего окна */
 .call-popup {
     position: fixed;
@@ -139,7 +170,16 @@ body {
     z-index: 1000;
     display: none;
 }
-
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
 .call-popup-content {
     text-align: center;
 }
@@ -376,11 +416,18 @@ img-work:hover {
 }
 
 .services .container p {
-    font-size: 16px;
+    font-size: 14px;
     color: #555555;
     font-weight: 400;
     font-family: "Roboto Slab";
     text-align: center;
+}
+
+.carousel-p {
+    font-size: 13px !important;
+    color: #555555 !important;
+    font-weight: 400 !important;
+    font-family: "Roboto Slab" !important;
 }
 
 .services .container h3 {
@@ -443,14 +490,62 @@ img-work:hover {
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.about-workMan figure:hover {
-    filter: drop-shadow(0 0 46px rgba(204, 204, 223, .71));
-    background-color: #fff;
-    transition: 0.3s;
-    transform: scale(1.1);
-    transform: rotate(1deg);
+.about-workMan figure {
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
     border-radius: 10px;
 }
+
+.about-workMan figure {
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.about-workMan figure:hover {
+    filter: drop-shadow(0 0 46px rgba(204, 204, 223, 0.71));
+    background-color: #fff;
+    transition: 0.3s;
+    transform: scale(1.1) rotate(1deg);
+}
+
+.social-icons {
+    position: absolute;
+    bottom: 95px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.social-icons a {
+    display: block;
+    width: 50%;
+    height: 50%;
+}
+.social-icons-end {
+    bottom: 55px !important;
+}
+.social-icons img {
+    width: 80%;
+    height: 75%;
+    transition: transform 0.3s;
+}
+
+/* Анимация увеличения иконок при наведении */
+.social-icons a:hover img {
+    transform: scale(1.4);
+}
+
+/* Показываем соц. иконки при ховере */
+.about-workMan figure:hover .social-icons {
+    opacity: 1;
+}
+
 
 .work-list {
     padding: 0;
@@ -530,7 +625,6 @@ img-work:hover {
     background-image: url('img/Paralax.png');
     background-size: cover;
     background-position: center;
-    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -567,7 +661,12 @@ img-work:hover {
     padding: 100px;
 
 }
-
+.hairdresser-a {
+    text-decoration: none;
+}
+.hairdresser-a:hover {
+    transform: scale(1.2);
+}
 .project-work h2 {
     font-size: 30px;
     color: #ffffff;
@@ -585,7 +684,7 @@ img-work:hover {
     text-decoration: none;
     font-family: "Roboto Slab";
     text-align: center;
-    padding: 13px 28px;
+    padding: 10px 28px;
     border-radius: 2px;
     background-color: transparent;
     border: 2px solid #ffffff;
@@ -602,11 +701,45 @@ img-work:hover {
     justify-content: center;
 }
 
+.row-recent-blog {
+    margin-bottom: 25px;
+}
+
+.recent-blog-hr {
+    width: 80%;
+    padding: 3px;
+}
+
 .recent-blog-h2 {
     font-size: 20px;
     text-transform: uppercase;
     color: #555555;
     font-weight: 400;
+    font-family: "Montserrat";
+    text-align: center;
+}
+
+.recent-blog-h3 {
+    color: #555555 !important;
+}
+.father-oct {
+    border: 2px solid #555;
+}
+.oct-18 {
+    font-size: 20px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #777777;
+    font-weight: 700;
+    font-family: "Montserrat";
+    text-align: center;
+}
+
+.oct-18-small {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #777777;
+    font-weight: 700;
     font-family: "Montserrat";
     text-align: center;
 }
@@ -693,7 +826,7 @@ img-work:hover {
     color: #555555;
     font-weight: 400;
     width: 50%;
-    min-height: 60px; 
+    min-height: 60px;
     transition: opacity 0.3s ease-in-out;
     font-family: "Roboto Slab";
     text-align: center;
@@ -857,7 +990,10 @@ img-work:hover {
     .project-work {
         padding: 65px;
     }
-
+    .recent-blog-hr {
+        width: 100%;
+        padding: 3px;
+    }
     .parent {
         left: 50%;
     }
@@ -911,6 +1047,10 @@ img-work:hover {
     .table-recent-blog {
         width: 33% !important;
     }
+    .recent-blog-hr {
+        width: 80%;
+        padding: 3px;
+    }
 }
 
 #carousel-container {
@@ -921,7 +1061,7 @@ img-work:hover {
 
 #carousel {
     display: flex;
-    gap: 5px; 
+    gap: 5px;
     transition: transform 0.5s ease-in-out;
 }
 
@@ -946,6 +1086,7 @@ img-work:hover {
         flex: 0 0 100%;
     }
 }
+
 @media (max-width: 576px) {
     .footer hr {
         width: 15% !important;
@@ -955,8 +1096,9 @@ img-work:hover {
 @media (min-width: 1024px) {
     .carousel-btn {
         display: none !important;
-    } 
+    }
 }
+
 .carousel-container {
     position: relative;
 }

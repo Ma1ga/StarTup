@@ -12,7 +12,8 @@ let popupName = document.getElementById("name-popup");
 let callForm = document.getElementById("callForm");
 let homeArrow = document.getElementById("home-arrow");
 let index = 0;
-
+let viewButton = document.querySelectorAll(".parent-a")
+let blackBackground = document.querySelector(".black-fonts")
 
 const quotes = [
     {
@@ -63,13 +64,20 @@ document.querySelector(".slider-footer").addEventListener("mouseleave", startSli
 
 startSlider();
 
-
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 100) { 
+        navbar.classList.add('fixed-top');
+    } else {
+        navbar.classList.remove('fixed-top');
+    }
+});
 
 document.addEventListener('DOMContentLoaded', function () {
     const carousel = document.getElementById('carousel');
     const items = Array.from(carousel.children);
     let visibleCount = getVisibleCount();
-    let isAnimating = false; // Флаг для предотвращения спама кликов
+    let isAnimating = false; 
 
     document.getElementById('next').addEventListener('click', function () {
         if (isAnimating) return;
@@ -77,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const firstItem = items.shift();
         items.push(firstItem);
-        animateCarousel(-1);
+        animateCarousel(1);
     });
 
     document.getElementById('prev').addEventListener('click', function () {
@@ -86,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const lastItem = items.pop();
         items.unshift(lastItem);
-        animateCarousel(1);
+        animateCarousel(-1);
     });
 
     function animateCarousel(direction) {
@@ -120,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// Обработчики мыши
 circle.addEventListener("mousedown", function (event) {
     event.preventDefault();
     startDrag(event);
@@ -132,7 +139,6 @@ document.addEventListener("mouseup", function () {
     endDrag();
 });
 
-// Обработчики тачскрина
 circle.addEventListener("touchstart", function (event) {
     event.preventDefault();
     startDrag(event.touches[0]);
@@ -144,14 +150,13 @@ document.addEventListener("touchend", function () {
     endDrag();
 });
 
-// Начало перетаскивания
+
 function startDrag(event) {
     activeCircle = circle;
     offsetX = event.clientX - circle.getBoundingClientRect().left;
     offsetY = event.clientY - circle.getBoundingClientRect().top;
 }
 
-// Перемещение круга
 function moveCircle(event) {
     if (!activeCircle) return;
 
@@ -283,7 +288,9 @@ document.addEventListener("DOMContentLoaded", function () {
 function closePopup(popupId) {
     const popup = document.getElementById(popupId);
     if (popup) {
+        blackBackground.style.display ="none"
         popup.style.display = "none";
+        isPopup = false
     }
 }
 
@@ -299,6 +306,45 @@ document.getElementById("logout-btn").addEventListener("click", function () {
 });
 
 
+let isPopup = false;
+
+function showPopup() {
+    callPopup.style.display = "block"
+    blackBackground.style.display ="block";
+    isPopup = true;
+  }
+  
+  function hidePopup() {
+    callPopup.style.display = "none"
+    blackBackground.style.display ="none"
+    isPopup = false;
+  }
+  function showCaptcha() {
+    captcha.style.display = "block"
+  }
+  
+  function hideCaptcha() {
+    captcha.style.display = "none"
+  }
+  captcha.addEventListener("click", (event) => {
+    if (event.target === captcha) {
+        hideCaptcha()
+    }
+  })
+
+//   callPopup.addEventListener("click", (event) => {
+//     if (event.target === callPopup) {
+//         hidePopup()
+//     }
+//   })
+window.addEventListener("click", (event) => {  
+      
+    if (isPopup && !callPopup.contains(event.target) && !orderCallButton.contains(event.target)) {
+        hidePopup();
+        isPopup = 0;
+        console.log("Попап закрито при кліку поза ним");
+    }
+});
 
 
 document.querySelectorAll(".three-click").forEach(image => {
@@ -315,42 +361,20 @@ document.querySelectorAll(".three-click").forEach(image => {
 });// тройной кликер ))))
 function openPopup(id) {
     document.getElementById(id).style.display = "flex";
+    isPopup = true
+    blackBackground.style.display = "block"
 }
 
-function closePopup(popupId) {
-    const popup = document.getElementById(popupId);
-    if (popup) {
-        popup.style.display = "none";
-    } else {
-        console.error("Попап с ID " + popupId + " не найден!");
-    }
-}
+// function closePopup(popupId) {
+//     const popup = document.getElementById(popupId);
+//     if (popup) {
+//         popup.style.display = "none";
+//     } else {
+//         console.error("Попап с ID " + popupId + " не найден!");
+//     }
+// }
 
 
-function showPopup() {
-    callPopup.style.display = "block"
-  }
-  
-  function hidePopup() {
-    callPopup.style.display = "none"
-  }
-  function showCaptcha() {
-    captcha.style.display = "block"
-  }
-  
-  function hideCaptcha() {
-    captcha.style.display = "none"
-  }
-  captcha.addEventListener("click", (event) => {
-    if (event.target === captcha) {
-        hideCaptcha()
-    }
-  })
-  callPopup.addEventListener("click", (event) => {
-    if (event.target === callPopup) {
-        hidePopup()
-    }
-  })
 
   document.addEventListener("DOMContentLoaded", function () {
     const filters = document.querySelectorAll(".work-list a");

@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="black-fonts" style="display: none;" ></div>
         <header class="hero">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
@@ -40,7 +41,6 @@
                 
             </div>
             <a href="javascript:void(0);" class="header-a-tel get-started" id="order-call">GET STARTED</a>
-            
             <div class="call-popup" id="popup">
                 <div class="call-popup-content">
                     <span class="close-popup" onclick="closePopup('popup')">close</span>
@@ -68,9 +68,9 @@
             </div>
             
         </header>
-        <div class="wrapper">
+        <div class="wrapper" id="services-arrow">
             <section class="services text-center py-5">
-                <div class="container" id="services-arrow">
+                <div class="container">
                     <h2>SERVICES</h2>
                     <hr class="services-hr mx-auto">
                     <p>We offer creative solutions to help your business grow.</p>
@@ -160,7 +160,7 @@
                                 <div class="col-md-3">
                                     <figure>
                                         <img src="img/Layer 16.png" class="img-work" alt="Team Member 4">
-                                        <figcaption>John Doe <br>Front-end Developer</figcaption>
+                                        <figcaption>John Doe <br><p class="carousel-p">Front-end Developer</p></figcaption>
                                         <div class="social-icons social-icons-end">
                                             <a href="#"><img src="img/Facebook.png" alt=""></a>
                                             <a href="#"><img src="img/Twitter.png" alt=""></a>
@@ -245,7 +245,7 @@
                         <h2>Hair Dresser</h2>
                         <div>
                             <img src="https://icieducation.co.uk/blog/wp-content/uploads/2021/07/guide-to-becoming-a-hairdresser.jpg" alt="">
-                            <p>Cutting, coloring, styling - the hairdresser works wonders on your hair. He not only selects the perfect style, but also makes each client more confident. ✨ <a href="#" class="hairdresser-a">#Hairdresser #Style #Beauty #NewLook</a></p>
+                            <p>Cutting, coloring, styling - the hairdresser works wonders on your hair. He not only selects the perfect style, but also makes each client more confident. ✨ <a href="https://www.youtube.com/watch?v=gke69PitnHk&ab_channel=%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%A2%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9" class="hairdresser-a">#Hairdresser #Style #Beauty #NewLook</a></p>
                         </div>
                         <button onclick="closePopup('hair-dresser')">Закрити</button>
                     </div>
@@ -255,7 +255,7 @@
                 <div class="project-work text-center">
                     <h2 class="animation slide-left">Do you like OUR WORK so far? <br>
                         Let's talk about YOUR PROJECT!</h2>
-                    <a href="#" class="button-hover animation slide-right">Get in Touch</a>
+                    <a href="#getintouch" class="button-hover animation slide-right">Get in Touch</a>
                 </div>
             </div>
             <div class="container my-5">
@@ -272,7 +272,7 @@
                             </div>
                             <div class="col-md-6 d-flex flex-column">
                                 <div class="d-flex align-items-center">
-                                    <div class="bg-light text-dark text-center px-3 py-2 me-3 oct father-oct">
+                                    <div class=" text-dark text-center px-3 py-2 me-3 oct father-oct">
                                         <p class="mb-0 fw-bold oct-18">18</p>
                                         <small class="oct-18-small">OCT</small>
                                     </div>
@@ -295,7 +295,7 @@
                             </div>
                             <div class="col-md-6 d-flex flex-column">
                                 <div class="d-flex align-items-center">
-                                    <div class="bg-light text-dark text-center px-3 py-2 me-3 oct father-oct">
+                                    <div class=" text-dark text-center px-3 py-2 me-3 oct father-oct">
                                         <p class="mb-0 fw-bold oct-18">18</p>
                                         <small class="oct-18-small">OCT</small>
                                     </div>
@@ -389,7 +389,7 @@
             </div>
         </div>
 
-        <div class="col-lg-7 animation slide-right">
+        <div class="col-lg-7 animation slide-right" id="getintouch">
             <form id="contactForm">
                 <div class="row g-3 margin">
                     <div class="col-md-6 padding">
@@ -416,7 +416,7 @@
                     <div class="col text-left send-message-div">
                         <button type="submit" class="text-start message-button button-hover">SEND MESSAGE</button>
                         <p class="text-message mt-2">
-                            *We'll contact you as soon as possible. We don't reply on Monday.*
+                            *We'll contact you as soon as possible. We don't reply on Monday.
                         </p>
                     </div>
                 </div>

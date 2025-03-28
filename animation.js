@@ -7,16 +7,16 @@ document.addEventListener("DOMContentLoaded", function () {
             const screenHeight = window.innerHeight; 
 
             if (itemPosition < screenHeight * 0.8) { 
-                item.classList.remove("slide-left", "slide-right"); // Убираем классы анимации
-                item.style.transition = "transform 0.8s ease, opacity 0.8s ease"; // Добавляем плавный эффект
-                item.style.transform = "translateX(0) scale(1)"; // Возвращаем в исходное положение
-                item.style.opacity = "1"; // Делаем видимыми
+                item.classList.remove("slide-left", "slide-right"); 
+                item.style.transition = "transform 0.8s ease, opacity 0.8s ease"; 
+                item.style.transform = "translateX(0) scale(1)"; 
+                item.style.opacity = "1"; 
             }
         });
     }
 
-    window.addEventListener("scroll", checkVisibility); // Запускаем при скролле
-    checkVisibility(); // Проверяем сразу, если блок уже виден
+    window.addEventListener("scroll", checkVisibility); 
+    checkVisibility(); 
 });
 
 
@@ -29,9 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     navLinks.forEach(link => {
         link.addEventListener("click", function () {
-            if (window.innerWidth <= 992) { // Закрывать только на мобильных экранах
-                navbarToggler.classList.add("collapsed"); // Визуально свернуть кнопку
-                navbarCollapse.classList.remove("show"); // Закрыть меню
+            if (window.innerWidth <= 992) { 
+                navbarToggler.classList.add("collapsed"); 
+                navbarCollapse.classList.remove("show"); 
             }
         });
     });

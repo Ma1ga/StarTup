@@ -18,7 +18,7 @@ const quotes = [
     {
         text: "Having placeat facere possimus, omnis voluptas assumenda est, omnis dolor.",
         author: "John Doe, Google Inc.",
-        image: "img/Citat1.png"
+        image: ["img/Citat1.png",]
     },
     {
         text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",

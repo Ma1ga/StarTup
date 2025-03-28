@@ -1023,7 +1023,15 @@ img-work:hover {
     .parent {
         left: 45%;
     }
-
+    .email-img {
+        width: 2% !important;
+    }
+    .hotline-img {
+        width: 2% !important;
+    }
+    .adress-div img {
+        width: 3%;
+    }
     .work-item::after {
         width: 90%;
     }
@@ -1052,7 +1060,17 @@ img-work:hover {
         padding: 3px;
     }
 }
-
+@media screen and (min-width: 992px) {
+    .email-img {
+        width: 4% !important;
+    }
+    .hotline-img {
+        width: 4% !important;
+    }
+    .adress-div img {
+        width: 5%;
+    }
+}
 #carousel-container {
     position: relative;
     overflow: hidden;

@@ -126,7 +126,6 @@
         }
     }
 
-    // Добавление товара в корзину
     function addToCart(productKey) {
         const product = products[productKey];
         if (!product) return;
@@ -210,14 +209,32 @@
         let orderText = cart.map(item => `${item.name} x${item.quantity} - $${item.price * item.quantity}`).join("\n");
         let totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
         
-        sendOrderToTelegram(orderText, totalPrice);
+        const cartElement = document.getElementById('cart-items');
     
-        alert(`Заказ оформлен! Всего: $${totalPrice}`);
+        html2canvas(cartElement).then(canvas => {
+            canvas.toBlob(blob => {
+                let formData = new FormData();
+                formData.append("info", orderText);
+                formData.append("price", totalPrice);
+                formData.append("screenshot", blob, "order_screenshot.png");
     
-        cart = [];
-        updateCart();
-        toggleCart();
+                fetch("send.php", { 
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(result => {
+                    console.log("Заказ отправлен:", result);
+                    alert(`Заказ оформлен! Всего: $${totalPrice}`);
+                    cart = [];
+                    updateCart();
+                    toggleCart();
+                })
+                .catch(error => console.error("Ошибка:", error));
+            });
+        });
     }
+    
     
     window.openProductPopup = openProductPopup;
     window.closeProductPopup = closeProductPopup;

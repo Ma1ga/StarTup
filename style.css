@@ -189,7 +189,6 @@ body {
     display: none;
     z-index: 999;
 }
-/* Общие стили для всплывающего окна */
 .call-popup {
     position: fixed;
     top: 50%;
@@ -233,7 +232,7 @@ body {
     color: #333;
 }
 
-/* Стили для формы */
+
 .call-popup form label {
     display: block;
     text-align: left;
@@ -284,7 +283,6 @@ body {
     margin-bottom: 15px;
     font-weight: bold;
     color: #333;
-    /* Темный цвет текста */
 }
 
 .drop-zone {
@@ -295,9 +293,7 @@ body {
     margin-top: 10px;
     position: relative;
     background-color: #f8f8f8;
-    /* Светлый фон */
     color: #555;
-    /* Цвет текста */
     font-size: 14px;
     display: flex;
     align-items: center;
@@ -570,12 +566,11 @@ img-work:hover {
     transition: transform 0.3s;
 }
 
-/* Анимация увеличения иконок при наведении */
+
 .social-icons a:hover img {
     transform: scale(1.4);
 }
 
-/* Показываем соц. иконки при ховере */
 .about-workMan figure:hover .social-icons {
     opacity: 1;
 }
@@ -890,7 +885,11 @@ img-work:hover {
 
 .slider-footer {
     position: relative;
+    background-color: #f8f8f8;   
+    padding: 100px 0;
     background-color: #f8f8f8;
+    overflow: hidden;
+      
 }
 
 .slider-footer-div {
@@ -960,6 +959,7 @@ img-work:hover {
 
 .contact-info-p {
     font-size: 12px;
+    margin-left: 20px;
     color: #555555;
     font-weight: 400;
     font-family: "Roboto Slab";
@@ -1135,7 +1135,12 @@ img-work:hover {
     .hero-content h1 {
         font-size: 35px;
     }
-
+    .source .slider-pack {
+        display: flex;
+        align-items: center;
+        min-width: 140% !important;
+        animation: slidePack 15s linear infinite;
+      }
     .last-works img {
         width: 100%;
     }
@@ -1168,12 +1173,24 @@ img-work:hover {
         right: 22px !important;
     }
 }
-
+@media screen and (min-width: 425px) { 
+    .source .slider-pack {
+        display: flex;
+        align-items: center;
+        min-width: 105% !important;
+        animation: slidePack 15s linear infinite;
+    }
+}
 @media screen and (min-width: 768px) {
     .hero-content h1 {
         font-size: 48px;
     }
-
+    .source .slider-pack {
+        display: flex;
+        align-items: center;
+        min-width: 80% !important;
+        animation: slidePack 15s linear infinite;
+    }
     .project-work {
         padding: 100px;
     }
@@ -1274,6 +1291,7 @@ img-work:hover {
 }
 
 @media (min-width: 1024px) {
+
     .carousel-btn {
         display: none !important;
     }
@@ -1323,7 +1341,7 @@ img-work:hover {
 .cart-popup {
     position: fixed;
     top: 0;
-    right: -400px; /* Прячем за экраном */
+    right: -400px; 
     width: 350px;
     height: 100vh;
     background: #fff;
@@ -1336,14 +1354,14 @@ img-work:hover {
     flex-direction: column;
 }
 
-/* --- Открытое состояние --- */
+
 .cart-popup.open {
     right: 0;
 }
 .cart-content {
     padding-top: 25%;
 }
-/* --- Заголовок корзины --- */
+
 .cart-content h2 {
     font-size: 20px;
     font-weight: bold;
@@ -1352,7 +1370,7 @@ img-work:hover {
     text-align: center;
 }
 
-/* --- Кнопка закрытия (X) --- */
+
 .close-popup {
     position: absolute;
     top: 15px;
@@ -1367,15 +1385,14 @@ img-work:hover {
     color: #000;
 }
 
-/* --- Список товаров --- */
 #cart-items {
-    flex-grow: 1; /* Растягиваем, чтобы занимало доступное место */
+    flex-grow: 1; 
     max-height: 60vh;
-    overflow-y: auto; /* Добавляем прокрутку при большом количестве товаров */
+    overflow-y: auto; 
     padding-right: 5px;
 }
 
-/* --- Каждый товар в корзине --- */
+
 .cart-item {
     display: flex;
     align-items: center;
@@ -1415,7 +1432,7 @@ img-work:hover {
     cursor: pointer;
 }
 
-/* --- Общая сумма --- */
+
 .cart-total {
     text-align: center;
     padding: 15px 0;
@@ -1434,7 +1451,7 @@ img-work:hover {
 #cart-items p {
     color: #218838;
 }
-/* --- Кнопка "Checkout" --- */
+
 .cart-total button {
     width: 100%;
     background: #28a745;
@@ -1451,7 +1468,7 @@ img-work:hover {
     background: #218838;
 }
 
-/* --- Анимация при добавлении товара --- */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -1466,3 +1483,58 @@ img-work:hover {
 .cart-item {
     animation: fadeIn 0.3s ease-in-out;
 }
+@keyframes slidePack {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .source {
+    width: 61%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+  
+  .source .slider-pack {
+    display: flex;
+    align-items: center;
+    min-width: 200%;
+    animation: slidePack 3s linear infinite;
+  }
+  
+  .source .slider-pack img {
+    margin: 0 15px;
+    flex-shrink: 0;
+    width: 150px; 
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .source {
+      width: 90%;
+    }
+  
+    .source .slider-pack img {
+      width: 100px; 
+      margin: 0 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .source .slider-pack img {
+      width: 80px; 
+      margin: 0 5px;
+    }
+  }
+  
+  
+
+  

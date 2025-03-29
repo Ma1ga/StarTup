@@ -25,11 +25,11 @@ function toggleCart() {
 
 
 function toggleReadMore(link) {
-    let extraContent = link.previousElementSibling; // Найти скрытый текст перед ссылкой
+    let extraContent = link.previousElementSibling; 
     
     if (extraContent.style.display === "none") {
         extraContent.style.display = "block";
-        link.textContent = "Read less"; // Меняем текст ссылки
+        link.textContent = "Read less"; 
     } else {
         extraContent.style.display = "none";
         link.textContent = "Read more";

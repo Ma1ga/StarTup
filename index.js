@@ -24,18 +24,15 @@ let blackBackground = document.querySelector(".black-fonts")
 const quotes = [
     {
         text: "Having placeat facere possimus, omnis voluptas assumenda est, omnis dolor.",
-        author: "John Doe, Google Inc.",
-        image: ["img/Citat1.png",]
+        author: "John Doe, Google Inc."
     },
     {
         text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",
-        author: "Jane Smith, Microsoft",
-        image: "img/Citat2.png"
+        author: "Jane Smith, Microsoft"
     },
     {
         text: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.",
-        author: "Elon Musk, Tesla",
-        image: "img/Citat3.png"
+        author: "Elon Musk, Tesla"
     }
 ];
 
@@ -43,14 +40,13 @@ let interval;
 
 const quoteText = document.getElementById("quote-text");
 const quoteAuthor = document.getElementById("quote-author");
-const quoteImage = document.querySelector(".clients-logo"); 
 const dots = document.querySelectorAll(".dot");
 
 function setQuote(i) {
     index = i;
     quoteText.textContent = quotes[i].text;
     quoteAuthor.textContent = quotes[i].author;
-    quoteImage.src = quotes[i].image; 
+    
 
     dots.forEach(dot => dot.classList.remove("active"));
     dots[i].classList.add("active");

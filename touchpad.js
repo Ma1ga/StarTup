@@ -1,136 +1,96 @@
-// Данные о товарах
-const products = {
-    'bird': { name: 'Bird Photo', price: 50 },
-    'one_photo': { name: 'Single Photo', price: 40 },
-    'three_photo': { name: 'Three Photos', price: 100 },
-    'two_photo': { name: 'Two Photos', price: 75 },
-    'fourth_photo': { name: 'Fourth Photo', price: 60 },
-    'five_photo': { name: 'Fifth Photo', price: 80 },
-    'six_photo': { name: 'Sixth Photo', price: 55 },
-    'seven_photo': { name: 'Seventh Photo', price: 65 }
-};
-
-let cart = [];
-
-// Показываем карточку товара
-function openPopup(productKey) {
-    const product = products[productKey];
-    if (!product) return;
-    
-    document.getElementById('image-card').src = `img/${productKey}.png`;
-    document.getElementById('card-name').textContent = product.name;
-    document.getElementById('price').textContent = `$${product.price}`;
-    document.getElementById('buy').textContent = 'Add to Cart';
-    document.getElementById('buy').onclick = () => {
-        addToCart(productKey);
-        closePopup('card');
+(function () {
+    // Данные о товарах
+    const products = {
+        'bird': { name: 'Bird Photo', price: 50, img: 'img/bird.png' },
+        'one_photo': { name: 'Single Photo', price: 40, img: 'img/one_photo.png' },
+        'three_photo': { name: 'Three Photo', price: 50, img: 'img/three_photo.png' },
+        'two_photo': { name: 'Two Photo', price: 40, img: 'img/two_photo.png' },
+        'fourth_photo': { name: 'Fourth Photo', price: 50, img: 'img/fourth_photo.png' },
+        'five_photo': { name: 'Five Photo', price: 40, img: 'img/five_photo.png' },
+        'six_photo': { name: 'Six Photo', price: 40, img: 'img/six_photo.png' },
+        'seven_photo': { name: 'Seven Photo', price: 50, img: 'img/seven_photo.png' }
     };
-    
-    document.getElementById('card').style.display = 'block';
-}
 
-// Закрываем попап
-function closePopup(id) {
-    document.getElementById(id).style.display = 'none';
-}
+    let cart = [];
 
-// Добавляем товар в корзину
-function addToCart(productKey) {
-    const product = products[productKey];
-    if (!product) return;
-    
-    // Проверяем, есть ли товар уже в корзине
-    const itemInCart = cart.find(item => item.id === productKey);
-    
-    if (itemInCart) {
-        itemInCart.quantity++;
-    } else {
-        cart.push({
-            id: productKey,
-            name: product.name,
-            price: product.price,
-            quantity: 1
+    // Добавление товара в корзину
+    function addToCart(productKey) {
+        const product = products[productKey];
+        if (!product) return;
+
+        let existingItem = cart.find(item => item.id === productKey);
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ id: productKey, name: product.name, price: product.price, quantity: 1 });
+        }
+        updateCart();
+    }
+
+    function updateCart() {
+        const cartItemsElement = document.getElementById('cart-items');
+        const cartCountElement = document.getElementById('cart-count');
+        const cartTotalElement = document.getElementById('cart-total');
+
+        if (!cartItemsElement || !cartCountElement || !cartTotalElement) return;
+
+        cartItemsElement.innerHTML = '';
+        let total = 0;
+        let totalItems = 0;
+
+        cart.forEach(item => {
+            total += item.price * item.quantity;
+            totalItems += item.quantity;
+
+            const itemElement = document.createElement('div');
+            itemElement.className = 'cart-item';
+            itemElement.innerHTML = `
+                <div class="cart-item-info">
+                    <h4>${item.name}</h4>
+                    <p>$${item.price} × ${item.quantity}</p>
+                </div>
+                <div class="cart-item-actions">
+                    <button onclick="changeQuantity('${item.id}', -1)">-</button>
+                    <button onclick="changeQuantity('${item.id}', 1)">+</button>
+                    <button onclick="removeFromCart('${item.id}')">×</button>
+                </div>
+            `;
+            cartItemsElement.appendChild(itemElement);
         });
+
+        cartCountElement.textContent = totalItems;
+        cartTotalElement.textContent = total.toFixed(2);
     }
-    
-    updateCart();
-}
 
-// Обновляем отображение корзины
-function updateCart() {
-    const cartItems = document.getElementById('cart-items');
-    const cartCount = document.getElementById('cart-count');
-    const cartTotal = document.getElementById('cart-total');
-    
-    // Очищаем корзину перед обновлением
-    cartItems.innerHTML = '';
-    
-    let totalPrice = 0;
-    let totalItems = 0;
-    
-    // Добавляем каждый товар в корзину
-    cart.forEach(item => {
-        totalPrice += item.price * item.quantity;
-        totalItems += item.quantity;
-        
-        const itemElement = document.createElement('div');
-        itemElement.className = 'cart-item';
-        itemElement.innerHTML = `
-            <div>
-                <h4>${item.name}</h4>
-                <p>$${item.price} × ${item.quantity}</p>
-            </div>
-            <div>
-                <button onclick="changeQty('${item.id}', -1)">-</button>
-                <button onclick="changeQty('${item.id}', 1)">+</button>
-                <button onclick="removeItem('${item.id}')">×</button>
-            </div>
-        `;
-        
-        cartItems.appendChild(itemElement);
-    });
-    
-    // Обновляем счетчик и общую сумму
-    cartCount.textContent = totalItems;
-    cartTotal.textContent = totalPrice.toFixed(2);
-}
+    function changeQuantity(productId, change) {
+        const item = cart.find(item => item.id === productId);
+        if (!item) return;
 
-// Изменяем количество товара
-function changeQty(productId, change) {
-    const item = cart.find(item => item.id === productId);
-    if (!item) return;
-    
-    item.quantity += change;
-    
-    // Удаляем товар, если количество ≤ 0
-    if (item.quantity <= 0) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            cart = cart.filter(item => item.id !== productId);
+        }
+        updateCart();
+    }
+
+    function removeFromCart(productId) {
         cart = cart.filter(item => item.id !== productId);
+        updateCart();
     }
-    
-    updateCart();
-}
 
-// Удаляем товар из корзины
-function removeItem(productId) {
-    cart = cart.filter(item => item.id !== productId);
-    updateCart();
-}
-
-// Показываем/скрываем корзину
-function toggleCart() {
-    const cartPopup = document.getElementById('cart-popup');
-    cartPopup.style.display = cartPopup.style.display === 'none' ? 'block' : 'none';
-}
-
-// Оформляем заказ
-function checkout() {
-    if (cart.length === 0) {
-        alert('Корзина пуста!');
-        return;
+    function checkout() {
+        if (cart.length === 0) {
+            alert('Your cart is empty');
+            return;
+        }
+        alert(`Order placed! Total: $${document.getElementById('cart-total').textContent}`);
+        cart = [];
+        updateCart();
     }
-    
-    alert(`Заказ оформлен! Сумма: $${document.getElementById('cart-total').textContent}`);
-    cart = [];
-    updateCart();
-    toggleCart();
-}
+
+    // Привязываем функции к window
+    window.addToCart = addToCart;
+    window.changeQuantity = changeQuantity;
+    window.removeFromCart = removeFromCart;
+    window.checkout = checkout;
+})();

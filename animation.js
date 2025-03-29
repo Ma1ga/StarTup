@@ -19,6 +19,18 @@ document.addEventListener("DOMContentLoaded", function () {
     checkVisibility(); 
 });
 
+function toggleReadMore(link) {
+    let extraContent = link.previousElementSibling; // Найти скрытый текст перед ссылкой
+    
+    if (extraContent.style.display === "none") {
+        extraContent.style.display = "block";
+        link.textContent = "Read less"; // Меняем текст ссылки
+    } else {
+        extraContent.style.display = "none";
+        link.textContent = "Read more";
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {

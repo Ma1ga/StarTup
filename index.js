@@ -296,6 +296,7 @@ function closePopup(popupId) {
         blackBackground.style.display ="none"
         popup.style.display = "none";
         isPopup = false
+
     }
 }
 
@@ -346,18 +347,9 @@ function showPopup() {
 window.addEventListener("click", (event) => {  
     setTimeout(() => {
         if (isPopup && !callPopup.contains(event.target) && orderCallButton.contains(event.target)) {
-            closePopup('hair-dresser');
+            
             isPopup = false;
-            console.log("Попап закрыт при клике вне его");
-        }
-    }); 
-});
-window.addEventListener("click", (event) => {  
-    setTimeout(() => {
-        if (isPopup && !popupDresser.contains(event.target) && viewButton.contains(event.target)) {
-            closePopup('hair-dresser');
-            isPopup = false;
-            console.log("Попап закрыт при клике вне его");
+            console.log("Попап закрыт при клике вне его Call");
         }
     }); 
 });
@@ -365,12 +357,13 @@ window.addEventListener("click", (event) => {
 window.addEventListener("click", (event) => {  
     setTimeout(() => {
         if (isPopup && !readMorePopup.contains(event.target) && readMoreButton.contains(event.target)) {
-            
+            blackBackground.style.display = "block"
             isPopup = false;
-            console.log("Попап закрыт при клике вне его qwje");
+            
+            console.log("Попап закрыт при клике вне его ReadMore");
         }
     }, ); 
-});
+}, 10);
 window.addEventListener("click", (event) => {  
     setTimeout(() => {
         if (isPopup && !confirmDataPopup.contains(event.target) && confirmDataPopupButton.contains(event.target)) {
@@ -379,18 +372,20 @@ window.addEventListener("click", (event) => {
             console.log("Попап закрыт при клике вне его qwje");
         }
     }, ); 
-});
+}, 1000);
 blackBackground.addEventListener("click", () => {
-    closePopup('hair-dresser');
     closePopup('readMorePopup');
-    
     closePopup('popup');
     closePopup('confirmationPopup');
+    
     isPopup = false;
     console.log("Попап закрыт по затемнению");
 });
 
-
+if (onclick == closePopup(readMorePopup)) {
+    closePopup('popup');
+    console.log("Закрыт")
+}
 document.querySelectorAll(".three-click").forEach(image => {
     image.addEventListener("click", function(event) {
         if (event.detail === 3) {
@@ -453,7 +448,6 @@ function openPopup(id) {
 
 
 orderCallButton.addEventListener("click", showPopup) 
-viewButton.addEventListener("click", showPopup);
 confirmDataPopupButton.addEventListener("click", showPopup);
 readMoreButton.addEventListener("click", showPopup);
 captchaActive.addEventListener("click", showCaptcha)

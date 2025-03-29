@@ -680,6 +680,7 @@ img-work:hover {
     z-index: 1;
 }
 .cart-icon {
+    background: url(img/erasebg-transformed.png);
     width: 4%;
 }
 .main-paralax::before {

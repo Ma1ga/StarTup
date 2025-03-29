@@ -9,6 +9,7 @@ const readMorePopup = document.getElementById("readMorePopup");
 const readMoreButton = document.getElementById("readMoreA");
 const confirmDataPopup = document.getElementById("confirmationPopup");
 const confirmDataPopupButton = document.getElementById("confirm-buttom");
+const  cardPopup = document.getElementById("card");
 let activeCircle = null;
 let offsetX, offsetY;
 let dropZone = document.getElementById("dropZone");
@@ -173,7 +174,7 @@ function moveCircle(event) {
     activeCircle.style.top = `${y}px`;
 }
 
-// Окончание перетаскивания
+
 function endDrag() {
     if (!activeCircle) return;
 
@@ -244,24 +245,21 @@ document.getElementById("callForm").addEventListener("submit", function(event) {
         return;
     }
 
-    // Сохраняем данные в localStorage
+
     localStorage.setItem("userName", nameValue);
     localStorage.setItem("userPhone", phoneNumber);
-    localStorage.setItem("isRegistered", "true"); // Флаг регистрации
+    localStorage.setItem("isRegistered", "true"); 
 
     console.log("Данные сохранены:", nameValue, phoneNumber);
 
-    // Скрываем кнопку и закрываем попап
     document.getElementById("order-call").style.display = "none";
     closePopup("popup");
 
-    // Обновляем приветствие
     const homeArrow = document.getElementById("home-arrow");
     if (homeArrow) {
         homeArrow.innerHTML = `WELCOME TO ${nameValue}`;
     }
 
-    // Показываем кнопку выхода
     document.getElementById("logout-btn").style.display = "block";
 });
 
@@ -277,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (isRegistered === "true") {
         document.getElementById("order-call").style.display = "none";
-        document.getElementById("logout-btn").style.display = "block"; // Показываем кнопку выхода
+        document.getElementById("logout-btn").style.display = "block"; 
     }
 
     if (savedName) {
@@ -354,16 +352,7 @@ window.addEventListener("click", (event) => {
     }); 
 });
 
-window.addEventListener("click", (event) => {  
-    setTimeout(() => {
-        if (isPopup && !readMorePopup.contains(event.target) && readMoreButton.contains(event.target)) {
-            blackBackground.style.display = "block"
-            isPopup = false;
-            
-            console.log("Попап закрыт при клике вне его ReadMore");
-        }
-    }, ); 
-}, 10);
+
 window.addEventListener("click", (event) => {  
     setTimeout(() => {
         if (isPopup && !confirmDataPopup.contains(event.target) && confirmDataPopupButton.contains(event.target)) {
@@ -374,18 +363,14 @@ window.addEventListener("click", (event) => {
     }, ); 
 }, 1000);
 blackBackground.addEventListener("click", () => {
-    closePopup('readMorePopup');
     closePopup('popup');
     closePopup('confirmationPopup');
     
-    isPopup = false;
+    isPopup = true;
     console.log("Попап закрыт по затемнению");
 });
 
-if (onclick == closePopup(readMorePopup)) {
-    closePopup('popup');
-    console.log("Закрыт")
-}
+
 document.querySelectorAll(".three-click").forEach(image => {
     image.addEventListener("click", function(event) {
         if (event.detail === 3) {
@@ -449,7 +434,6 @@ function openPopup(id) {
 
 orderCallButton.addEventListener("click", showPopup) 
 confirmDataPopupButton.addEventListener("click", showPopup);
-readMoreButton.addEventListener("click", showPopup);
 captchaActive.addEventListener("click", showCaptcha)
 
 // document.addEventListener("mousemove", (event) =>{

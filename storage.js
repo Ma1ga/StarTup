@@ -76,25 +76,31 @@ function saveData() {
 
 
 function loadData() {
-    document.getElementById('name').value = localStorage.name ;
-    document.getElementById('email').value = localStorage.email ;
-    document.getElementById('subject').value = localStorage.subject ;
-    document.getElementById('company').value = localStorage.company ;
-    document.getElementById('message').value = localStorage.message ;
+    if (localStorage.getItem('name')) {
+        document.getElementById('name').value = localStorage.name;
+        document.getElementById('email').value = localStorage.email;
+        document.getElementById('subject').value = localStorage.subject;
+        document.getElementById('company').value = localStorage.company;
+        document.getElementById('message').value = localStorage.message;
+    }
 }
+
 
 
 form.addEventListener('submit', function (e) {
     e.preventDefault(); 
     showPopup(); 
+    
 });
 
 confirmButton.addEventListener('click', function () {
     saveData(); 
+    closePopup('popup');
     popup.style.display = 'none'; 
 });
 
 rejectButton.addEventListener('click', function () {
+    closePopup('popup');
     popup.style.display = 'none';
 });
 

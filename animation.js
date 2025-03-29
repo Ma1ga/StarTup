@@ -18,6 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", checkVisibility); 
     checkVisibility(); 
 });
+function toggleCart() {
+    let cartPopup = document.getElementById("cart-popup");
+    cartPopup.classList.toggle("open"); 
+}
+
 
 function toggleReadMore(link) {
     let extraContent = link.previousElementSibling; // Найти скрытый текст перед ссылкой

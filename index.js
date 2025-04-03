@@ -65,6 +65,12 @@ document.querySelector(".slider-footer").addEventListener("mouseenter", () => cl
 document.querySelector(".slider-footer").addEventListener("mouseleave", startSlider);
 
 startSlider();
+const someElement = document.getElementById("some-id"); 
+if (someElement) {
+    someElement.classList.add("some-class");
+} else {
+    console.error("Элемент с id 'some-id' не найден!");
+}
 
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
@@ -256,7 +262,13 @@ document.getElementById("callForm").addEventListener("submit", function(event) {
         homeArrow.innerHTML = `WELCOME TO ${nameValue}`;
     }
 
-    document.getElementById("logout-btn").style.display = "block";
+    document.addEventListener("DOMContentLoaded", function () {
+        const logoutBtn = document.getElementById("logout-btn");
+        if (logoutBtn) {
+            logoutBtn.style.display = "block";
+        }
+    });
+    
 });
 
 function validate(phoneNumber) {
@@ -281,6 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (savedPhone) {
         document.getElementById("tel").value = savedPhone;
+        console.log(savedPhone)
     }
 });
 

@@ -85,6 +85,8 @@ body {
 }
 
 .captcha-span {
+    font-size: 20px;
+    font-family: 'Roboto Slab';
     color: #333;
 }
 
@@ -227,6 +229,7 @@ body {
 }
 
 .call-popup h2 {
+    font-family: fantasy;
     margin-bottom: 15px;
     font-size: 20px;
     color: #333;
@@ -675,9 +678,49 @@ img-work:hover {
     z-index: 1;
 }
 .cart-icon {
-    background: url(img/erasebg-transformed.png);
-    width: 4%;
+    position: relative;
+    background: #ff6600;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
 }
+
+.cart-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.cart-icon:hover {
+    background: #e65c00;
+    transform: scale(1.1);
+}
+
+.cart-icon:active {
+    transform: scale(0.95);
+}
+
+#cart-count {
+    position: absolute;
+    top: 0px;
+    right: 3px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .main-paralax::before {
     content: "";
     position: absolute;
@@ -1036,6 +1079,7 @@ img-work:hover {
 }
 
 #confirmButton {
+    font-family: Marck Script;
     background: #28a745;
     color: white;
 }
@@ -1045,6 +1089,7 @@ img-work:hover {
 }
 
 #rejectButton {
+    font-family: Marck Script;
     background: #dc3545;
     color: white;
 }
@@ -1134,6 +1179,9 @@ img-work:hover {
 @media screen and (min-width: 320px) {
     .hero-content h1 {
         font-size: 35px;
+    }
+    .cart-icon {
+        margin: auto;
     }
     .source .slider-pack {
         display: flex;
@@ -1239,6 +1287,7 @@ img-work:hover {
         padding: 3px;
     }
 }
+
 @media screen and (min-width: 992px) {
     .email-img {
         width: 4% !important;
@@ -1249,6 +1298,10 @@ img-work:hover {
     .adress-div img {
         width: 5%;
     }
+    .cart-icon {
+        margin: unset;
+    }
+
 }
 #carousel-container {
     position: relative;

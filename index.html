@@ -33,6 +33,9 @@
                             <button id="logout-btn" class="logout" style="display: none;">Выйти</button>
                         </ul>
                         <button class="cart-icon" onclick="toggleCart()">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" stroke="white" stroke-width="2" d="M6 6h15l-1.5 9h-12l-1.5-9zm0 0H4m2 12h2m10 0h-2M9 18h6"></path>
+                            </svg>
                             <span id="cart-count">0</span>
                         </button>
                     </div>
@@ -60,7 +63,7 @@
 
             <div class="call-popup" id="popup">
                 <div class="call-popup-content">
-                    <span class="close-popup" onclick="closePopup('popup')">close</span>
+                    <span class="close-popup" onclick="closePopup('popup')">x</span>
                     <h2>Регістрація Клієнта</h2>
                     <input type="checkbox" placeholder="captcha" id="captcha-active"> 
                     <span class="captcha-span">captcha</span>

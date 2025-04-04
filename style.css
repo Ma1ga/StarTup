@@ -86,7 +86,7 @@ body {
 
 .captcha-span {
     font-size: 20px;
-    font-family: 'Roboto Slab';
+    font-family: Playfair Display SC;
     color: #333;
 }
 
@@ -229,9 +229,9 @@ body {
 }
 
 .call-popup h2 {
-    font-family: fantasy;
+    font-family: Playfair Display SC;
     margin-bottom: 15px;
-    font-size: 20px;
+    font-size: 23px;
     color: #333;
 }
 
@@ -300,6 +300,7 @@ body {
     font-size: 14px;
     display: flex;
     align-items: center;
+    margin: auto;
     justify-content: center;
 }
 
@@ -324,12 +325,12 @@ body {
 }
 
 #submitBtn:not(:disabled) {
-    background-color: #ff4d4d;
+    background-color: #04e2ff;
     cursor: pointer;
 }
 
 #submitBtn:not(:disabled):hover {
-    background-color: #e60000;
+    background-color: #07a9b4;
 }
 
 img-work:hover {
@@ -1092,6 +1093,14 @@ img-work:hover {
     font-family: Marck Script;
     background: #dc3545;
     color: white;
+}
+.quote {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.quote.hidden {
+    opacity: 0;
 }
 
 #rejectButton:hover {

@@ -43,14 +43,21 @@ const quoteAuthor = document.getElementById("quote-author");
 const dots = document.querySelectorAll(".dot");
 
 function setQuote(i) {
-    index = i;
-    quoteText.textContent = quotes[i].text;
-    quoteAuthor.textContent = quotes[i].author;
-    
+    quoteText.classList.add("hidden");
+    quoteAuthor.classList.add("hidden");
 
-    dots.forEach(dot => dot.classList.remove("active"));
-    dots[i].classList.add("active");
+    setTimeout(() => {
+        quoteText.textContent = quotes[i].text;
+        quoteAuthor.textContent = quotes[i].author;
+
+        quoteText.classList.remove("hidden");
+        quoteAuthor.classList.remove("hidden");
+
+        dots.forEach(dot => dot.classList.remove("active"));
+        dots[i].classList.add("active");
+    }, 500);
 }
+
 
 function nextQuote() {
     index = (index + 1) % quotes.length;
@@ -65,12 +72,7 @@ document.querySelector(".slider-footer").addEventListener("mouseenter", () => cl
 document.querySelector(".slider-footer").addEventListener("mouseleave", startSlider);
 
 startSlider();
-const someElement = document.getElementById("some-id"); 
-if (someElement) {
-    someElement.classList.add("some-class");
-} else {
-    console.error("Элемент с id 'some-id' не найден!");
-}
+
 
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
@@ -291,10 +293,10 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("home-arrow").innerHTML = `WELCOME TO ${savedName}`;
     }
 
-    if (savedPhone) {
-        document.getElementById("tel").value = savedPhone;
-        console.log(savedPhone)
-    }
+    // if (savedPhone) {
+    //     document.getElementById("tel").value = savedPhone;
+    //     console.log(savedPhone)
+    // }
 });
 
 function closePopup(popupId) {
